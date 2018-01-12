@@ -21,11 +21,8 @@ $sql = "INSERT into ACCOUNTS(id,first_name,last_name,username,password,created,d
         VALUES(null,'$first','$last','$username','$pass',CURRENT_TIMESTAMP,null,'$type',null)";
 
 if($conn->query($sql)){
-    $m = "Successfully Added!";
 
     echo "<script type='text/javascript'>
-        
-            alert('$m');
             window.location.replace('../admin/accounts.php');
         </script>";
 

@@ -1,3 +1,18 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['username'])){
+        $m = "Please Login First!";
+
+        echo "
+            <script type = 'text/javascript'>
+            alert('$m');
+            window.location.replace('../index.php');
+            </script>
+            ";
+}
+    ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -18,6 +33,8 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+
 </head>
 
 <body>
@@ -30,7 +47,11 @@
     -->
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+
+                    <?php
+                    echo $_SESSION['username'];
+
+                    ?>
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -41,46 +62,29 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    <li class="active">
+                        <a href="items.php">
+                            <i class="material-icons">content_paste</i>
+                            <p>Items</p>
+                        </a>
+                    </li>
+
                     <li>
                         <a href="accounts.php">
                             <i class="material-icons">person</i>
-                            <p>User Profile</p>
+                            <p>Accounts</p>
                         </a>
                     </li>
                     <li>
-                        <a href="items.php">
-                            <i class="material-icons">content_paste</i>
-                            <p>Table List</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./typography.html">
+                        <a href="ppmp.php">
                             <i class="material-icons">library_books</i>
-                            <p>Typography</p>
+                            <p>PPMP</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./icons.html">
-                            <i class="material-icons">bubble_chart</i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="./maps.html">
-                            <i class="material-icons">location_on</i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./notifications.html">
+                        <a href="notifications.php">
                             <i class="material-icons text-gray">notifications</i>
                             <p>Notifications</p>
-                        </a>
-                    </li>
-                    <li class="active-pro">
-                        <a href="upgrade.html">
-                            <i class="material-icons">unarchive</i>
-                            <p>Upgrade to PRO</p>
                         </a>
                     </li>
                 </ul>
@@ -96,7 +100,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Map </a>
+                        <div class="dropdown">
+                            <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">Select Category <span class="glyphicon glyphicon-chevron-down"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="items.php">A - Office Supplies</a>
+                                    <a href="two.php">B - Printer and Photocopier</a>
+                                    <a href="three.php">C - Janitorial Supplies</a>
+                                    <a href="four.php">D - Office Suuplies w/ ICS</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -135,6 +149,11 @@
                                     <i class="material-icons">person</i>
                                     <p class="hidden-lg hidden-md">Profile</p>
                                 </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href = "../php/logout.php">Logout</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search">
@@ -150,7 +169,65 @@
                     </div>
                 </div>
             </nav>
-            <div id="map"></div>
+            <!-- Modal for Add Item -->
+            <div class="modal col-lg-12" id="add_item" data-backdrop="static">
+                <div class="modal-dialog" style="width:80%;">
+                    <div class="modal-content">
+
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header" data-background-color="purple">
+                                    <h4 class="title">A - Office Supplies</h4>
+                                    <p class="category"></p>
+                                </div>
+                                <div class="card-content table-responsive">
+                                    <table class="table">
+                                        <thead class="text-primary">
+                                            <th>Code</th>
+                                            <th>Stock#</th>
+                                            <th>Unit</th>
+                                            <th>General Description</th>
+                                            <th>Brand</th>
+                                            <th>Quantity</th>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            require '../php/db.php';
+
+                                            $sql = "SELECT * FROM items WHERE code = 01";
+                                            $res = $conn->query($sql);
+                                            if($res->num_rows > 0){
+                                                while($row = $res->fetch_assoc()){
+                                                    echo "<tr>"
+                                                        . "<td>" . $row['code'] . "</td>"
+                                                        . "<td>" . $row['stockno'] . "</td>"
+                                                        . "<td>" . $row['unit'] . "</td>"
+                                                        . "<td>" . $row['description'] . "</td>"
+                                                        . "<td>" . $row['brand'] . "</td>"
+                                                        . "<td>" . $row['quantity'] . "</td>"
+                                                        . "</tr>";
+                                                }
+                                            }else{
+                                                echo "<tr><td>No records in the database!</td></tr>";
+                                            }
+
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                    <a href="../php/item.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_item">Add Item</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
@@ -172,16 +249,45 @@
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        if ($('.main-panel > .content').length == 0) {
-            $('.main-panel').css('height', '100%');
+
+<script type='text/javascript'>
+    function checkNumber()
+    {
+        //Store the password field objects into variables ...
+        var quan = document.getElementById('quantity');
+        //Store the Confimation Message Object ...
+        var message = document.getElementById('confirmMessageC');
+        //Set the colors we will be using ...
+        var badColor = '#ff6666';
+        var goodColor = '#66cc66';
+        //Compare the values in the password field
+        //and the confirmation field
+        if(quan.value <= 0){
+            //The passwords match.
+            //Set the color to the good color and inform
+            //the user that they have entered the correct password
+            document.getElementById('submitD').disabled = true;
+            message.style.color = badColor;
+            message.innerHTML = 'Only Positive Numbers Allowed!'
+        }else if(quan.value >= 0) {
+            document.getElementById('submitD').disabled = false;
+            message.style.color = goodColor;
+            message.innerHTML = '   '
         }
+    }
+    function NumberOnly() {
+        var ageInput = document.getElementById("quantity")
+
+        ageInput.addEventListener("keydown", function(e) {
+            // prevent: "e", "=", ",", "-", "."
+            if ([69, 187, 188, 189, 190].includes(e.keyCode)) {
+                e.preventDefault();
+            }
+        })
+        
+    }
 
 
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initGoogleMaps();
-    });
 </script>
 
 </html>

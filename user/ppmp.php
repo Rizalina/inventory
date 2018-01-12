@@ -1,18 +1,17 @@
 <?php
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['username'])){
-        $m = "Please Login First!";
+if(!isset($_SESSION['username'])){
+    $m = "Please Login First!";
 
-        echo "
+    echo "
             <script type = 'text/javascript'>
-            alert('$m');
-            window.location.replace('../index.php');
+                alert('$m');
+                window.location.replace('../index.php');
             </script>
-            ";
+         ";
 }
-    ?>
-
+?>
 <!doctype html>
 <html lang="en">
 
@@ -33,8 +32,6 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-
-
 </head>
 
 <body>
@@ -62,7 +59,7 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="items.php">
                             <i class="material-icons">content_paste</i>
                             <p>Items</p>
@@ -75,7 +72,7 @@
                             <p>Accounts</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="ppmp.php">
                             <i class="material-icons">library_books</i>
                             <p>PPMP</p>
@@ -100,17 +97,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <div class="dropdown">
-                            <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">Select Category <span class="glyphicon glyphicon-chevron-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="items.php">A - Office Supplies</a>
-                                    <a href="two.php">B - Printer and Photocopier</a>
-                                    <a href="three.php">C - Janitorial Supplies</a>
-                                    <a href="four.php">D - Office Suuplies w/ ICS</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <a class="navbar-brand" href="#"> Typography </a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -149,11 +136,6 @@
                                     <i class="material-icons">person</i>
                                     <p class="hidden-lg hidden-md">Profile</p>
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href = "../php/logout.php">Logout</a>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search">
@@ -169,65 +151,79 @@
                     </div>
                 </div>
             </nav>
-            <!-- Modal for Add Item -->
-            <div class="modal col-lg-12" id="add_item" data-backdrop="static">
-                <div class="modal-dialog" style="width:80%;">
+            <!-- Modal for add PPMP -->
+            <div class="modal col-lg-12" id="add_ppmp" data-backdrop="static">
+                <div class="modal-dialog" style="width:90%;">
                     <div class="modal-content">
-
                     </div>
                 </div>
             </div>
+
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">A - Office Supplies</h4>
-                                    <p class="category"></p>
+                                    <h4 class="title">PPMP</h4>
+                                    <p class="category">Officess with PPMP</p>
                                 </div>
                                 <div class="card-content table-responsive">
                                     <table class="table">
                                         <thead class="text-primary">
-                                            <th>Code</th>
-                                            <th>Stock#</th>
-                                            <th>Unit</th>
-                                            <th>General Description</th>
-                                            <th>Brand</th>
-                                            <th>Quantity</th>
+                                        <th>Name</th>
+                                        <th>Country</th>
+                                        <th>City</th>
+                                        <th>Salary</th>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                            require '../php/db.php';
-
-                                            $sql = "SELECT * FROM items WHERE code = 01";
-                                            $res = $conn->query($sql);
-                                            if($res->num_rows > 0){
-                                                while($row = $res->fetch_assoc()){
-                                                    echo "<tr>"
-                                                        . "<td>" . $row['code'] . "</td>"
-                                                        . "<td>" . $row['stockno'] . "</td>"
-                                                        . "<td>" . $row['unit'] . "</td>"
-                                                        . "<td>" . $row['description'] . "</td>"
-                                                        . "<td>" . $row['brand'] . "</td>"
-                                                        . "<td>" . $row['quantity'] . "</td>"
-                                                        . "</tr>";
-                                                }
-                                            }else{
-                                                echo "<tr><td>No records in the database!</td></tr>";
-                                            }
-
-                                            ?>
+                                        <tr>
+                                            <td>Dakota Rice</td>
+                                            <td>Niger</td>
+                                            <td>Oud-Turnhout</td>
+                                            <td class="text-primary">$36,738</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Minerva Hooper</td>
+                                            <td>Curaçao</td>
+                                            <td>Sinaai-Waas</td>
+                                            <td class="text-primary">$23,789</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sage Rodriguez</td>
+                                            <td>Netherlands</td>
+                                            <td>Baileux</td>
+                                            <td class="text-primary">$56,142</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Philip Chaney</td>
+                                            <td>Korea, South</td>
+                                            <td>Overland Park</td>
+                                            <td class="text-primary">$38,735</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Doris Greene</td>
+                                            <td>Malawi</td>
+                                            <td>Feldkirchen in Kärnten</td>
+                                            <td class="text-primary">$63,542</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mason Porter</td>
+                                            <td>Chile</td>
+                                            <td>Gloucester</td>
+                                            <td class="text-primary">$78,615</td>
+                                        </tr>
                                         </tbody>
                                     </table>
-                                    <a href="../php/item.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_item">Add Item</a>
+                                    <a href="../php/ppmp.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_ppmp">Add PPMP</a>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
@@ -249,45 +245,5 @@
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
-
-<script type='text/javascript'>
-    function checkNumber()
-    {
-        //Store the password field objects into variables ...
-        var quan = document.getElementById('quantity');
-        //Store the Confimation Message Object ...
-        var message = document.getElementById('confirmMessageC');
-        //Set the colors we will be using ...
-        var badColor = '#ff6666';
-        var goodColor = '#66cc66';
-        //Compare the values in the password field
-        //and the confirmation field
-        if(quan.value <= 0){
-            //The passwords match.
-            //Set the color to the good color and inform
-            //the user that they have entered the correct password
-            document.getElementById('submitD').disabled = true;
-            message.style.color = badColor;
-            message.innerHTML = 'Only Positive Numbers Allowed!'
-        }else if(quan.value >= 0) {
-            document.getElementById('submitD').disabled = false;
-            message.style.color = goodColor;
-            message.innerHTML = '   '
-        }
-    }
-    function NumberOnly() {
-        var ageInput = document.getElementById("quantity")
-
-        ageInput.addEventListener("keydown", function(e) {
-            // prevent: "e", "=", ",", "-", "."
-            if ([69, 187, 188, 189, 190].includes(e.keyCode)) {
-                e.preventDefault();
-            }
-        })
-        
-    }
-
-
-</script>
 
 </html>

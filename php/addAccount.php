@@ -58,7 +58,7 @@
                 </div>
 
                 <a href="../admin/accounts.php" class='btn btn-primary pull-right' id='submitB'>Cancel</a>
-                <input type="submit" value="Add"class="btn btn-primary pull-right" id="submit">
+                <input type="submit" value="Add" class="btn btn-primary pull-right" id="submit">
 
 
                 <div class="clearfix"></div>

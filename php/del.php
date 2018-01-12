@@ -9,19 +9,29 @@
 require 'db.php';
 $i = $_GET['n'];
 
-$sql = "DELETE FROM accounts WHERE id = '$i'";
+$sql2 = "SELECT userType FROM accounts WHERE id = '$i'";
 
-if($conn->query($sql) === TRUE){
-    $m = "Successfully Deleted!";
+$res = $conn->query($sql2);
+$r = $res->fetch_row();
 
-    echo "
+
+
+if($r[0] == "user"){
+
+    $sql = "DELETE FROM accounts WHERE id = '$i'";
+
+    if($conn->query($sql)) {
+        $m = "Successfully Deleted!";
+
+        echo "
             <script type = 'text/javascript'>
             alert('$m');
             window.location.replace('../admin/accounts.php');
             </script>
             ";
+    }
 }else{
-    $m = "Failed to Delete, Contact Administrator!";
+    $m = "Failed to Delete Administrator Account, Contact Administrator!";
 
     echo "
             <script type = 'text/javascript'>
