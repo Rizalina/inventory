@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION['temp'] =  basename($_SERVER['PHP_SELF']);
 
 if(!isset($_SESSION['username'])){
     $m = "Please Login First!";
@@ -11,9 +10,17 @@ if(!isset($_SESSION['username'])){
             window.location.replace('../index.php');
             </script>
             ";
+}elseif ($_SESSION['type'] != "admin"){
+    $m = "Unauthorized Access!!!";
+
+    echo "
+            <script type = 'text/javascript'>
+            alert('$m');
+            window.location.replace('../index.php');
+            </script>
+            ";
 }
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -35,7 +42,11 @@ if(!isset($_SESSION['username'])){
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
+    <style>
+        #new_issuance {
 
+        }
+    </style>
 </head>
 
 <body>
@@ -63,18 +74,20 @@ if(!isset($_SESSION['username'])){
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="items.php">
                         <i class="material-icons">content_paste</i>
                         <p>Items</p>
                     </a>
                 </li>
-                <li>
+
+                <li class="active">
                     <a href="issuance.php">
                         <i class="material-icons">content_paste</i>
                         <p>Issuance</p>
                     </a>
                 </li>
+
                 <li>
                     <a href="accounts.php">
                         <i class="material-icons">person</i>
@@ -106,17 +119,7 @@ if(!isset($_SESSION['username'])){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <div class="dropdown">
-                        <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">Select Category <span class="glyphicon glyphicon-chevron-down"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="items.php">A - Office Supplies</a>
-                                <a href="two.php">B - Printer and Photocopier</a>
-                                <a href="three.php">C - Janitorial Supplies</a>
-                                <a href="four.php">D - Office Suuplies w/ ICS</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a class="navbar-brand" href="#"> Profile </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -175,78 +178,100 @@ if(!isset($_SESSION['username'])){
                 </div>
             </div>
         </nav>
-        <!-- Modal for Add Item -->
-        <div class="modal col-lg-12" id="add_item" data-backdrop="static">
+
+
+
+        <!-- Modal for Add Account -->
+        <div class="modal col-lg-12" id="add_account" data-backdrop="static">
             <div class="modal-dialog" style="width:80%;">
                 <div class="modal-content">
-
+                    <?php
+                    include "../php/addAccount.php";
+                    ?>
                 </div>
             </div>
         </div>
-        <!-- Modal for Delete Item -->
+        <!-- Modal for Edit Account -->
 
-        <div class="modal col-lg-12" id="del_item" data-backdrop="static">
-            <div class="modal-dialog" style="width:27%;">
+        <div class="modal col-lg-12" id="edit_account" data-backdrop="static">
+            <div class="modal-dialog" style="width:80%;">
+                <div class="modal-content">
+                    <?php
+                    //include "../php/editAccount.php";
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Add New Issuance -->
+
+        <div class="modal col-lg-12" id="new_issuance" data-backdrop="static">
+            <div class="modal-dialog" style="width:99%;">
                 <div class="modal-content">
 
                 </div>
             </div>
         </div>
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12 pull-right">
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
-                                <h4 class="title">B - Printer and Photocopier</h4>
-                                <p class="category"></p>
+                                <h4 class="title">Accounts</h4>
+                                <p class="category">All Accounts</p>
                             </div>
-                            <div class="card-content table-responsive">
-                                <table class="table">
-                                    <thead class="text-primary">
-                                    <th>Code</th>
-                                    <th>Stock#</th>
-                                    <th>Unit</th>
-                                    <th>General Description</th>
-                                    <th>Brand</th>
-                                    <th>Quantity</th>
-                                    <th>Proccess</th>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    require '../php/db.php';
 
-                                    $sql = "SELECT * FROM items WHERE code = 02";
-                                    $res = $conn->query($sql);
-                                    if($res->num_rows > 0){
-                                        while($row = $res->fetch_assoc()){
-                                            echo "<tr>"
-                                                . "<td>" . $row['code'] . "</td>"
-                                                . "<td>" . $row['stockno'] . "</td>"
-                                                . "<td>" . $row['unit'] . "</td>"
-                                                . "<td>" . $row['description'] . "</td>"
-                                                . "<td>" . $row['brand'] . "</td>"
-                                                . "<td>" . $row['quantity'] . "</td>"
-                                                . "<td>" . "<a href =" . '../php/editItem.php?num='.$row['stockno'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
+                            <div class="card-content">
+                                <div class="card-content table-responsive">
+                                    <table class="table">
+                                        <thead class="text-primary">
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Password</th>
+                                        <th>Created</th>
+                                        <th>Last Login</th>
+                                        <th>Type</th>
+                                        <th>Proccess</th>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        require '../php/db.php';
+
+                                        $sql = "SELECT id,first_name,last_name,username,password,created,date_login,time_login,userType FROM accounts";
+
+                                        $res = $conn->query($sql);
+
+                                        if($res->num_rows > 0){
+                                            while($row = $res->fetch_assoc()){
+                                                echo "<tr>" . "<td>" . ucwords($row['first_name']) . " "  . ucwords($row['last_name']) . "</td>"
+                                                    . "<td>" . $row['username'] ."</td>"
+                                                    . "<td>" . $row['password'] ."</td>"
+                                                    . "<td>" . $row['created'] ."</td>"
+                                                    . "<td>" . $row['date_login'] .','. $row['time_login'] ."</td>"
+                                                    . "<td>" . $row['userType'] ."</td>"
+                                                    . "<td>" . "<a href =" . '../php/editAccount.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
                                                                 <i class='material-icons'>edit</i>
-                                                            </a>" . "<a href =" . '../php/itemDelete.php?num='.$row['stockno'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs'  data-toggle='modal' data-target='#del_item'>
+                                                            </a>" . "<a href =" . '../php/deleteAccount.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal' data-target='#del_account'>
                                                                 <i class='material-icons'>close</i>
                                                             </a>"
-                                                ."</td>"
-                                                . "</tr>";
+                                                    ."</td>"
+                                                    . "</tr>"
+                                                ;
+                                            }
                                         }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                    <a href="../php/addNewIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#new_issuance">New Issuance</a>
+                                </div>
 
-                                    }else{
-                                        echo "<tr><td>No records in the database!</td></tr>";
-                                    }
-
-                                    ?>
-                                    </tbody>
-                                </table>
-                                <a href="../php/item.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_item">Add Item</a>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -270,8 +295,9 @@ if(!isset($_SESSION['username'])){
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
-<!-- Cusotm Js -->
+<-- Custome JS -->
 <script src="../assets/js/custom.js"></script>
+
 
 
 

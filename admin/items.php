@@ -68,7 +68,12 @@
                             <p>Items</p>
                         </a>
                     </li>
-
+                    <li>
+                        <a href="issuance.php">
+                            <i class="material-icons">content_paste</i>
+                            <p>Issuance</p>
+                        </a>
+                    </li>
                     <li>
                         <a href="accounts.php">
                             <i class="material-icons">person</i>
@@ -177,6 +182,15 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal for Delete Item -->
+
+            <div class="modal col-lg-12" id="del_item" data-backdrop="static">
+                <div class="modal-dialog" style="width:27%;">
+                    <div class="modal-content">
+
+                    </div>
+                </div>
+            </div>
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -195,6 +209,7 @@
                                             <th>General Description</th>
                                             <th>Brand</th>
                                             <th>Quantity</th>
+                                            <th>Process</th>
                                         </thead>
                                         <tbody>
                                             <?php
@@ -211,8 +226,16 @@
                                                         . "<td>" . $row['description'] . "</td>"
                                                         . "<td>" . $row['brand'] . "</td>"
                                                         . "<td>" . $row['quantity'] . "</td>"
+                                                        . "<td>" . "<a href =" . '../php/editItem.php?num='.$row['stockno'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
+                                                                <i class='material-icons'>edit</i>
+                                                            </a>" . "<a href =" . '../php/itemDelete.php?num='.$row['stockno'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal'  data-target='#del_item'>
+                                                                <i class='material-icons'>close</i>
+                                                            </a>"
+                                                        ."</td>"
                                                         . "</tr>";
                                                 }
+
+                                                $_SESSION['temp'] =  basename($_SERVER['PHP_SELF']);
                                             }else{
                                                 echo "<tr><td>No records in the database!</td></tr>";
                                             }
@@ -247,47 +270,21 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/js/demo.js"></script>
+<!-- Custom JS -->
+<script src="../assets/js/custom.js"></script>
 
-<script type='text/javascript'>
-    function checkNumber()
-    {
-        //Store the password field objects into variables ...
-        var quan = document.getElementById('quantity');
-        //Store the Confimation Message Object ...
-        var message = document.getElementById('confirmMessageC');
-        //Set the colors we will be using ...
-        var badColor = '#ff6666';
-        var goodColor = '#66cc66';
-        //Compare the values in the password field
-        //and the confirmation field
-        if(quan.value <= 0){
-            //The passwords match.
-            //Set the color to the good color and inform
-            //the user that they have entered the correct password
-            document.getElementById('submitD').disabled = true;
-            message.style.color = badColor;
-            message.innerHTML = 'Only Positive Numbers Allowed!'
-        }else if(quan.value >= 0) {
-            document.getElementById('submitD').disabled = false;
-            message.style.color = goodColor;
-            message.innerHTML = '   '
-        }
-    }
+<script type="text/javascript">
     function NumberOnly() {
-        var ageInput = document.getElementById("quantity")
+        var num = document.getElementById("quantity")
 
-        ageInput.addEventListener("keydown", function(e) {
-            // prevent: "e", "=", ",", "-", "."
-            if ([69, 187, 188, 189, 190].includes(e.keyCode)) {
-                e.preventDefault();
-            }
+        num.addEventListener("keydown", function(e) {
+        // prevent: "e", "=", ",", "-", "."
+        if ([69, 187, 188, 189, 190].includes(e.keyCode)) {
+        e.preventDefault();
+        }
         })
-        
+
     }
-
-
 </script>
 
 </html>

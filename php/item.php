@@ -5,7 +5,7 @@
             <h4 class="title">Add Item</h4>
         </div>
         <div class="card-content table-responsive">
-            <form>
+            <form action="../php/addItem.php" method="post">
                 <table class="table">
                     <thead class="text-primary">
                     <th class="text-center">Code</th>

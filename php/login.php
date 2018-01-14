@@ -21,6 +21,7 @@ $st->bind_param('ss',$user,$pass);
 $st->execute();
 
 $res = $st->get_result();
+$r = $res->fetch_row();
 
 if($res->num_rows > 0){
 
@@ -30,8 +31,7 @@ if($res->num_rows > 0){
     $sql = "UPDATE accounts SET time_login = '$t',date_login = '$d' WHERE username = '$user'";
     $conn->query($sql);
 
-    $_SESSION['t'] = $t;
-    $_SESSION['d'] = $d;
+    $_SESSION['type'] = $r[2];
 
     $_SESSION['username'] = $user;
 

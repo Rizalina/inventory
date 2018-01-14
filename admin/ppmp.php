@@ -65,7 +65,12 @@ if(!isset($_SESSION['username'])){
                             <p>Items</p>
                         </a>
                     </li>
-
+                    <li>
+                        <a href="issuance.php">
+                            <i class="material-icons">content_paste</i>
+                            <p>Issuance</p>
+                        </a>
+                    </li>
                     <li>
                         <a href="accounts.php">
                             <i class="material-icons">person</i>
@@ -153,7 +158,7 @@ if(!isset($_SESSION['username'])){
             </nav>
             <!-- Modal for add PPMP -->
             <div class="modal col-lg-12" id="add_ppmp" data-backdrop="static">
-                <div class="modal-dialog" style="width:90%;">
+                <div class="modal-dialog" style="width:99%;">
                     <div class="modal-content">
                     </div>
                 </div>
@@ -239,11 +244,25 @@ if(!isset($_SESSION['username'])){
 <script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="../assets/js/bootstrap-notify.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/js/demo.js"></script>
+<!-- Custom JS -->
+<script src="../assets/js/custom.js"></script>
+
+<script type="text/javascript">
+    function numberWithPeriod() {
+        var code = document.getElementById("code")
+
+        code.addEventListener("keydown", function(e) {
+            // prevent: "e", "=", ",", "-",
+            if ([69, 187, 188, 189].includes(e.keyCode)) {
+                e.preventDefault();
+            }
+        })
+
+    }
+</script>
+
+
 
 </html>

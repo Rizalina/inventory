@@ -66,6 +66,12 @@ window.location.replace('../index.php');
                             <p>Items</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="issuance.php">
+                            <i class="material-icons">content_paste</i>
+                            <p>Issuance</p>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="accounts.php">

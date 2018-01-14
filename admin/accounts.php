@@ -10,6 +10,15 @@ if(!isset($_SESSION['username'])){
             window.location.replace('../index.php');
             </script>
             ";
+}elseif ($_SESSION['type'] != "admin"){
+    $m = "Unauthorized Access!!!";
+
+    echo "
+            <script type = 'text/javascript'>
+            alert('$m');
+            window.location.replace('../index.php');
+            </script>
+            ";
 }
 ?>
 <!doctype html>
@@ -63,6 +72,12 @@ if(!isset($_SESSION['username'])){
                         <a href="items.php">
                             <i class="material-icons">content_paste</i>
                             <p>Items</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="issuance.php">
+                            <i class="material-icons">content_paste</i>
+                            <p>Issuance</p>
                         </a>
                     </li>
 
@@ -231,7 +246,7 @@ if(!isset($_SESSION['username'])){
                                                         . "<td>" . $row['userType'] ."</td>"
                                                         . "<td>" . "<a href =" . '../php/editAccount.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
                                                                 <i class='material-icons'>edit</i>
-                                                            </a>" . "<a href =" . '../php/delete.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal' data-target='#del_account'>
+                                                            </a>" . "<a href =" . '../php/deleteAccount.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal' data-target='#del_account'>
                                                                 <i class='material-icons'>close</i>
                                                             </a>"
                                                         ."</td>"
@@ -273,68 +288,10 @@ if(!isset($_SESSION['username'])){
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/js/demo.js"></script>
+<-- Custome JS -->
+<script src="../assets/js/custom.js"></script>
 
-<script type='text/javascript'>
-    function checkPassB()
-    {
-        //Store the password field objects into variables ...
-        var pass = document.getElementById('passA');
-        var pass2 = document.getElementById('pass2A');
-        //Store the Confimation Message Object ...
-        var message = document.getElementById('confirmMessageA');
-        //Set the colors we will be using ...
-        var goodColor = '#66cc66';
-        var badColor = '#ff6666';
-        //Compare the values in the password field
-        //and the confirmation field
-        if(pass.value == pass2.value){
-            //The passwords match.
-            //Set the color to the good color and inform
-            //the user that they have entered the correct password
-            document.getElementById('submitB').disabled = false;
-            message.style.color = goodColor;
-            message.innerHTML = 'Passwords Match!'
-        }else{
-            //The passwords do not match.
-            //Set the color to the bad color and
-            //notify the user.
-            document.getElementById('submitB').disabled = true;
-            message.style.color = badColor;
-            message.innerHTML = 'Passwords Do Not Match!'
-        }
-    }
 
-    function checkPass()
-    {
-        //Store the password field objects into variables ...
-        var pass = document.getElementById('pass');
-        var pass2 = document.getElementById('pass2');
-        //Store the Confimation Message Object ...
-        var message = document.getElementById('confirmMessage');
-        //Set the colors we will be using ...
-        var goodColor = "#66cc66";
-        var badColor = "#ff6666";
-        //Compare the values in the password field
-        //and the confirmation field
-        if(pass.value == pass2.value){
-            //The passwords match.
-            //Set the color to the good color and inform
-            //the user that they have entered the correct password
-            document.getElementById('submit').disabled = false;
-            message.style.color = goodColor;
-            message.innerHTML = "Passwords Match!"
-        }else{
-            //The passwords do not match.
-            //Set the color to the bad color and
-            //notify the user.
-            document.getElementById('submit').disabled = true;
-            message.style.color = badColor;
-            message.innerHTML = "Passwords Do Not Match!"
-        }
-    }
-</script>
 
 
 
