@@ -201,12 +201,13 @@
                                     <p class="category"></p>
                                 </div>
                                 <div class="card-content table-responsive">
-                                    <table class="table">
+                                    <table class="">
                                         <thead class="text-primary">
-                                            <th>Code</th>
                                             <th>Stock#</th>
+                                            <th>Code</th>
                                             <th>Unit</th>
                                             <th>General Description</th>
+                                            <th>Type</th>
                                             <th>Brand</th>
                                             <th>Quantity</th>
                                             <th>Process</th>
@@ -215,20 +216,21 @@
                                             <?php
                                             require '../php/db.php';
 
-                                            $sql = "SELECT * FROM items WHERE code = 01";
+                                            $sql = "SELECT * FROM items WHERE type = 'Office Supplies'";
                                             $res = $conn->query($sql);
                                             if($res->num_rows > 0){
                                                 while($row = $res->fetch_assoc()){
                                                     echo "<tr>"
+                                                        . "<td>" . $row['item_id'] . "</td>"
                                                         . "<td>" . $row['code'] . "</td>"
-                                                        . "<td>" . $row['stockno'] . "</td>"
                                                         . "<td>" . $row['unit'] . "</td>"
                                                         . "<td>" . $row['description'] . "</td>"
+                                                        . "<td>" . $row['type'] . "</td>"
                                                         . "<td>" . $row['brand'] . "</td>"
                                                         . "<td>" . $row['quantity'] . "</td>"
-                                                        . "<td>" . "<a href =" . '../php/editItem.php?num='.$row['stockno'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
+                                                        . "<td>" . "<a href =" . '../php/editItem.php?num='.$row['item_id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
                                                                 <i class='material-icons'>edit</i>
-                                                            </a>" . "<a href =" . '../php/itemDelete.php?num='.$row['stockno'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal'  data-target='#del_item'>
+                                                            </a>" . "<a href =" . '../php/itemDelete.php?num='.$row['item_id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal'  data-target='#del_item'>
                                                                 <i class='material-icons'>close</i>
                                                             </a>"
                                                         ."</td>"

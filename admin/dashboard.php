@@ -178,7 +178,7 @@
                                         <?php
                                             require '../php/db.php';
 
-                                            $sql = "SELECT COUNT(stockno) FROM items";
+                                            $sql = "SELECT COUNT(item_id) FROM items";
                                             $result = $conn->query($sql);
                                             $res = $result->fetch_row();
 

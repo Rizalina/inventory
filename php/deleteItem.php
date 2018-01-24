@@ -8,13 +8,12 @@
 
 require 'db.php';
 $i = $_GET['n'];
-$t = $_SESSION['temp'];
 
 $sql = "DELETE FROM items WHERE stockno = '$i'";
 
 if($conn->query($sql)){
 
-    header("Location:../admin/'$t'");
+    header("Location:../admin/items.php");
 
 }else{
     $m = "Failed to Delete Item, Contact Administrator!";

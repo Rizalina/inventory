@@ -36,14 +36,22 @@
                                         </select>
                                     </td>
                                     <td><input type="text" name="description" ></td>
-                                    <td><input type="text" name="unit" size="5"></td>
-                                    <td><input type="number" id = "code" name="size" onkeydown="numberWithPeriod();" style="width:80px;"></td>
-                                    <td><input type="number" id = "code" name="cost" onkeydown="numberWithPeriod();" style="width:80px;"></td>
-                                    <td><input type="number" id = "code" name="budget" onkeydown="numberWithPeriod();" style="width:80px;"></td>
-                                    <td><input type="number" id = "code" name="q1" onkeydown="numberWithPeriod();" style="width:80px;"></td>
-                                    <td><input type="number" id = "code" name="q2" onkeydown="numberWithPeriod();" style="width:80px;"></td>
-                                    <td><input type="number" id = "code" name="q3" onkeydown="numberWithPeriod();" style="width:80px;"></td>
-                                    <td><input type="number" id = "code" name="q4" onkeydown="numberWithPeriod();" style="width:80px;"></td>
+                                    <td>
+                                        <select name="unit" id="unit">
+                                            <?php
+                                                require 'global.php';
+
+                                                showUnits();
+                                            ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="number" id = "code" name="size[]" onkeydown="numberWithPeriod();" style="width:80px;"></td>
+                                    <td><input type="number" id = "code" name="cost[]" onkeydown="numberWithPeriod();" style="width:80px;"></td>
+                                    <td><input type="number" id = "code" name="budget[]" onkeydown="numberWithPeriod();" style="width:80px;"></td>
+                                    <td><input type="number" id = "code" name="q1[]" onkeydown="numberWithPeriod();" style="width:80px;"></td>
+                                    <td><input type="number" id = "code" name="q2[]" onkeydown="numberWithPeriod();" style="width:80px;"></td>
+                                    <td><input type="number" id = "code" name="q3[]" onkeydown="numberWithPeriod();" style="width:80px;"></td>
+                                    <td><input type="number" id = "code" name="q4[]" onkeydown="numberWithPeriod();" style="width:80px;"></td>
                                 </tr>
                             </tbody>
                         </table>

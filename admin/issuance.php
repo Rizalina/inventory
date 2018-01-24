@@ -236,32 +236,9 @@ if(!isset($_SESSION['username'])){
                                         <th>Proccess</th>
                                         </thead>
                                         <tbody>
-                                        <?php
-                                        require '../php/db.php';
-
-                                        $sql = "SELECT id,first_name,last_name,username,password,created,date_login,time_login,userType FROM accounts";
-
-                                        $res = $conn->query($sql);
-
-                                        if($res->num_rows > 0){
-                                            while($row = $res->fetch_assoc()){
-                                                echo "<tr>" . "<td>" . ucwords($row['first_name']) . " "  . ucwords($row['last_name']) . "</td>"
-                                                    . "<td>" . $row['username'] ."</td>"
-                                                    . "<td>" . $row['password'] ."</td>"
-                                                    . "<td>" . $row['created'] ."</td>"
-                                                    . "<td>" . $row['date_login'] .','. $row['time_login'] ."</td>"
-                                                    . "<td>" . $row['userType'] ."</td>"
-                                                    . "<td>" . "<a href =" . '../php/editAccount.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
-                                                                <i class='material-icons'>edit</i>
-                                                            </a>" . "<a href =" . '../php/deleteAccount.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal' data-target='#del_account'>
-                                                                <i class='material-icons'>close</i>
-                                                            </a>"
-                                                    ."</td>"
-                                                    . "</tr>"
-                                                ;
-                                            }
-                                        }
-                                        ?>
+                                            <tr>
+                                                <td>Nothing yet</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                     <a href="../php/addNewIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#new_issuance">New Issuance</a>

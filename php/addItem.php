@@ -5,9 +5,6 @@
  * Date: 1/13/2018
  * Time: 5:17 PM
  */
-session_start();
-
-$t = $_SESSION['temp'];
 require 'db.php';
 
 $code = $_POST['code'];
@@ -25,7 +22,7 @@ $st->execute();
 
 
 if($st->errno == 0){
-    header("Location:../admin/$t");
+    header("Location:../admin/items.php");
 }else{
     $m = "Error Adding Item! Please contact administrator!";
 

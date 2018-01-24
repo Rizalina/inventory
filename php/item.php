@@ -26,29 +26,16 @@
                             </td>
                             <td>
                                 <select name="unit" class="form-control">
-                                    <option>bottle</option>
-                                    <option>pack</option>
-                                    <option>pc</option>
-                                    <option>box</option>
-                                    <option>tube</option>
-                                    <option>set</option>
-                                    <option>book</option>
-                                    <option>ream</option>
-                                    <option>pad</option>
-                                    <option>roll</option>
-                                    <option>cart</option>
-                                    <option>bot</option>
-                                    <option>bundle</option>
-                                    <option>can</option>
-                                    <option>gal</option>
-                                    <option>pouch</option>
-                                    <option>pair</option>
-                                    <option>kilo</option>
-                                    <option>unit</option>
+                                    <?php
+                                            require 'global.php';
+
+                                            showUnits();
+
+                                    ?>
                                 </select>
                             </td>
                             <td>
-                                <input type="text" placeholder="Description" name = "description" class="form-control">
+                                <input type="text" placeholder="Description" name = "description" class="form-control" required>
                             </td>
                             <td>
                                 <input type="text" placeholder="Brand" name = "brand" class="form-control">
