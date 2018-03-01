@@ -28,8 +28,6 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
     <link href="../assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="../assets/css/demo.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
@@ -86,9 +84,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="notifications.php">
+                        <a href="settings.php">
                             <i class="material-icons text-gray">notifications</i>
-                            <p>Notifications</p>
+                            <p>Settings</p>
                         </a>
                     </li>
                 </ul>
@@ -150,16 +148,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form class="navbar-form navbar-right" role="search">
-                            <div class="form-group  is-empty">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="material-input"></span>
-                            </div>
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                <i class="material-icons">search</i>
-                                <div class="ripple-container"></div>
-                            </button>
-                        </form>
+
                     </div>
                 </div>
             </nav>
@@ -178,7 +167,7 @@
                                         <?php
                                             require '../php/db.php';
 
-                                            $sql = "SELECT COUNT(item_id) FROM items";
+                                            $sql = "SELECT COUNT(id) FROM items";
                                             $result = $conn->query($sql);
                                             $res = $result->fetch_row();
 
@@ -241,7 +230,15 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Offices</p>
-                                    <h3 class="title">0</h3>
+                                    <?php
+                                    require '../php/db.php';
+
+                                    $sql = "SELECT COUNT(id) FROM office";
+                                    $result = $conn->query($sql);
+                                    $res = $result->fetch_row();
+
+                                    echo $res[0];
+                                    ?>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -321,21 +318,59 @@
                                             <?php
                                                 require '../php/db.php';
 
-                                                $sql = "SELECT first_name,last_name,date_login,time_login,username,userType FROM accounts";
+                                                $sql = "SELECT * FROM accounts";
 
                                                 $res = $conn->query($sql);
 
                                                 if($res->num_rows > 0){
                                                     while($row = $res->fetch_assoc()){
-                                                        echo "<tr>" . "<td>" . ucwords($row['first_name']) . " "  . ucwords($row['last_name']) . "</td>"
+                                                        echo "<tr>" . "<td>" . ucwords($row['fullname']) . "</td>"
                                                             . "<td>" . $row['username'] ."</td>"
-                                                            . "<td>" . $row['date_login'] .','. $row['time_login'] ."</td>"
+                                                            . "<td>" . $row['loginDate'] .','. $row['loginTime'] ."</td>"
                                                             . "<td>" . $row['userType'] ."</td>"
                                                             . "</tr>"
                                                         ;
                                                     }
                                                 }
                                             ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header" data-background-color="red">
+                                    <h4 class="title">Transactions</h4>
+                                </div>
+                                <div class="card-content table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="text-warning">
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Login</th>
+                                        <th>Type</th>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        require '../php/db.php';
+
+                                        $sql = "SELECT * FROM accounts";
+
+                                        $res = $conn->query($sql);
+
+                                        if($res->num_rows > 0){
+                                            while($row = $res->fetch_assoc()){
+                                                echo "<tr>" . "<td>" . ucwords($row['fullname']) . "</td>"
+                                                    . "<td>" . $row['username'] ."</td>"
+                                                    . "<td>" . $row['loginDate'] .','. $row['loginTime'] ."</td>"
+                                                    . "<td>" . $row['userType'] ."</td>"
+                                                    . "</tr>"
+                                                ;
+                                            }
+                                        }
+                                        ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -352,14 +387,8 @@
 <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../assets/js/material.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="../assets/js/chartist.min.js"></script>
-<!--  Dynamic Elements plugin -->
-<script src="../assets/js/arrive.min.js"></script>
 <!--  PerfectScrollbar Library -->
 <script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/bootstrap-notify.js"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 

@@ -87,7 +87,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="notifications.php">
+                        <a href="settings.php">
                             <i class="material-icons text-gray">notifications</i>
                             <p>Notifications</p>
                         </a>
@@ -105,9 +105,9 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <div class="dropdown">
-                            <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">Select Category <span class="glyphicon glyphicon-chevron-down"></span></a>
-                            <ul class="dropdown-menu">
+                        <div class="dropdown te">
+                            <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">Select Category<span class="glyphicon glyphicon-chevron-down"></span></a>
+                            <ul class="dropdown-menu ">
                                 <li>
                                     <a href="items.php">A - Office Supplies</a>
                                     <a href="two.php">B - Printer and Photocopier</a>
@@ -161,22 +161,24 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form class="navbar-form navbar-right" role="search">
-                            <div class="form-group  is-empty">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="material-input"></span>
-                            </div>
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                <i class="material-icons">search</i>
-                                <div class="ripple-container"></div>
-                            </button>
-                        </form>
+
                     </div>
                 </div>
             </nav>
+
+            <!-- Modal for Edit Item -->
+
+            <div class="modal col-lg-12" id="edit_item" data-backdrop="static">
+                <div class="modal-dialog" style="width:99%;">
+                    <div class="modal-content">
+
+                    </div>
+                </div>
+            </div>
+
             <!-- Modal for Add Item -->
             <div class="modal col-lg-12" id="add_item" data-backdrop="static">
-                <div class="modal-dialog" style="width:80%;">
+                <div class="modal-dialog" style="width:99%;">
                     <div class="modal-content">
 
                     </div>
@@ -196,50 +198,84 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">A - Office Supplies</h4>
-                                    <p class="category"></p>
+                                <div class="card-header" data-background-color="blue">
+
+                                    <h4 class="title">A - Office Supplies
+                                        <form class="form-inline pull-right" role="search">
+                                            <div class="form-group  is-empty">
+                                                <input type="text" class="form-control" placeholder="Search" style="::webki-input-placeholder:{ color: red}">
+                                                <span class="material-input"></span>
+
+                                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                                <i class="material-icons">search</i>
+                                                <div class="ripple-container"></div>
+                                            </button>
+                                        </form>
+                                    </h4>
+
+                                    <!--
+                                    <form class="navbar-form navbar-right" role="search">
+                                        <div class="form-group  is-empty">
+                                            <input type="text" class="form-control" placeholder="Search">
+                                            <span class="material-input"></span>
+                                        </div>
+                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                            <i class="material-icons">search</i>
+                                            <div class="ripple-container"></div>
+                                        </button>
+                                    </form>
+                                    -->
+
                                 </div>
+
+
                                 <div class="card-content table-responsive">
-                                    <table class="">
+
+
+                                    <table class="table">
                                         <thead class="text-primary">
-                                            <th>Stock#</th>
-                                            <th>Code</th>
-                                            <th>Unit</th>
-                                            <th>General Description</th>
-                                            <th>Type</th>
-                                            <th>Brand</th>
-                                            <th>Quantity</th>
+                                            <th>Category</th>
+                                            <th>ACCT-SN</th>
+                                            <th>PGSO-SN</th>
+                                            <th>ITEM DESCRIPTION</th>
+                                            <th>UOM</th>
+                                            <th>Starting Quantity</th>
+                                            <th>UNIT COST</th>
+                                            <th>BRAND</th>
+                                            <th>RO-P</th>
                                             <th>Process</th>
                                         </thead>
                                         <tbody>
                                             <?php
                                             require '../php/db.php';
+                                            $_SESSION['temp'] =  basename($_SERVER['PHP_SELF']);
 
-                                            $sql = "SELECT * FROM items WHERE type = 'Office Supplies'";
+                                            $sql = "SELECT * FROM items WHERE category = '01'";
                                             $res = $conn->query($sql);
                                             if($res->num_rows > 0){
                                                 while($row = $res->fetch_assoc()){
                                                     echo "<tr>"
-                                                        . "<td>" . $row['item_id'] . "</td>"
-                                                        . "<td>" . $row['code'] . "</td>"
-                                                        . "<td>" . $row['unit'] . "</td>"
+                                                        . "<td>" . $row['category'] . "</td>"
+                                                        . "<td>" . $row['acctSn'] . "</td>"
+                                                        . "<td>" . $row['pgsoSn'] . "</td>"
                                                         . "<td>" . $row['description'] . "</td>"
-                                                        . "<td>" . $row['type'] . "</td>"
+                                                        . "<td>" . $row['unit'] . "</td>"
+                                                        . "<td>" . $row['startingQuantity'] . "</td>"
+                                                        . "<td>" . $row['unitCost'] . "</td>"
                                                         . "<td>" . $row['brand'] . "</td>"
-                                                        . "<td>" . $row['quantity'] . "</td>"
-                                                        . "<td>" . "<a href =" . '../php/editItem.php?num='.$row['item_id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
+                                                        . "<td>" . $row['orderPoint'] . "</td>"
+                                                        . "<td>" . "<a href =" . '../php/editItem.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_item'>
                                                                 <i class='material-icons'>edit</i>
-                                                            </a>" . "<a href =" . '../php/itemDelete.php?num='.$row['item_id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal'  data-target='#del_item'>
+                                                            </a>" . "<a href =" . '../php/itemDelete.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal'  data-target='#del_item'>
                                                                 <i class='material-icons'>close</i>
                                                             </a>"
                                                         ."</td>"
                                                         . "</tr>";
                                                 }
 
-                                                $_SESSION['temp'] =  basename($_SERVER['PHP_SELF']);
+
                                             }else{
-                                                echo "<tr><td>No records in the database!</td></tr>";
+                                                echo "<td><p>No records in the database!</p></td>";
                                             }
 
                                             ?>
@@ -268,8 +304,6 @@
 <script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="../assets/js/bootstrap-notify.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Custom JS -->
@@ -284,6 +318,30 @@
         if ([69, 187, 188, 189, 190].includes(e.keyCode)) {
         e.preventDefault();
         }
+        })
+
+    }
+
+    function NumberOnly2() {
+        var num = document.getElementById("quantity")
+
+        num.addEventListener("keydown", function(e) {
+            // prevent: "e", "=", ",", "-", "."
+            if ([69, 187, 188, 189, 190].includes(e.keyCode)) {
+                e.preventDefault();
+            }
+        })
+
+    }
+
+    function NumberOnly3() {
+        var num = document.getElementById("quantity")
+
+        num.addEventListener("keydown", function(e) {
+            // prevent: "e", "=", ",", "-", "."
+            if ([69, 187, 188, 189, 190].includes(e.keyCode)) {
+                e.preventDefault();
+            }
         })
 
     }

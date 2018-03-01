@@ -10,15 +10,6 @@ if(!isset($_SESSION['username'])){
             window.location.replace('../index.php');
             </script>
             ";
-}elseif ($_SESSION['type'] != "admin"){
-    $m = "Unauthorized Access!!!";
-
-    echo "
-            <script type = 'text/javascript'>
-            alert('$m');
-            window.location.replace('../index.php');
-            </script>
-            ";
 }
 ?>
 <!doctype html>
@@ -101,7 +92,7 @@ if(!isset($_SESSION['username'])){
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.php">
+                    <a href="settings.php">
                         <i class="material-icons text-gray">notifications</i>
                         <p>Notifications</p>
                     </a>
@@ -212,6 +203,33 @@ if(!isset($_SESSION['username'])){
                 </div>
             </div>
         </div>
+        <!-- Modal for Edit Item -->
+        <div class="modal col-lg-12" id="edit_issuance" data-backdrop="static">
+            <div class="modal-dialog" style="width:99%;">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Delete Issuance -->
+
+        <div class="modal col-lg-12" id="delete_issuance" data-backdrop="static">
+            <div class="modal-dialog" style="width:27%;">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Edit Issuance -->
+        <div class="modal col-lg-12" id="edit_issuance" data-backdrop="static">
+            <div class="modal-dialog" style="width:27%;">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
 
         <div class="content">
             <div class="container-fluid">
@@ -227,18 +245,39 @@ if(!isset($_SESSION['username'])){
                                 <div class="card-content table-responsive">
                                     <table class="table">
                                         <thead class="text-primary">
-                                        <th>Name</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
-                                        <th>Created</th>
-                                        <th>Last Login</th>
-                                        <th>Type</th>
+                                        <th>Division</th>
+                                        <th>Office</th>
+                                        <th>Responsibility Center</th>
+                                        <th>Date/Time</th>
+                                        <th>Status</th>
                                         <th>Proccess</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Nothing yet</td>
-                                            </tr>
+                                            <?php
+                                                require '../php/db.php';
+
+                                                $sql = "SELECT id,division,office,responsibility,dateT,timeT,status FROM issuance ";
+
+                                                $res = $conn->query($sql);
+
+                                                if($res){
+                                                    while ($row = $res->fetch_assoc()){
+                                                        echo "<tr>"
+                                                            . "<td>" .$row['division']. "</td>"
+                                                            . "<td>" .$row['office']. "</td>"
+                                                            . "<td>" .$row['responsibility']. "</td>"
+                                                            . "<td>" .$row['dateT']. " " . $row['timeT'] . "</td>"
+                                                            . "<td>" .$row['status']. "</td>"
+                                                            . "<td>" . "<a href =" . '../php/editIssuance.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_issuance'>
+                                                                <i class='material-icons'>edit</i>
+                                                            </a>" . "<a href =" . '../php/issueDelete.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal'  data-target='#edit_issuance'>
+                                                                <i class='material-icons'>close</i>
+                                                            </a>"
+                                                            ."</td>"
+                                                            . "</tr>";
+                                                    }
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                     <a href="../php/addNewIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#new_issuance">New Issuance</a>
@@ -260,22 +299,17 @@ if(!isset($_SESSION['username'])){
 <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../assets/js/material.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="../assets/js/chartist.min.js"></script>
-<!--  Dynamic Elements plugin -->
-<script src="../assets/js/arrive.min.js"></script>
-<!--  PerfectScrollbar Library -->
-<script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/bootstrap-notify.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <-- Custome JS -->
 <script src="../assets/js/custom.js"></script>
 
+<script>
+    function autoFill() {
+        var a = document.getElementById("office").val();
 
+        alert("yeah");
+    }
+</script>
 
 
 

@@ -7,6 +7,18 @@
  */
 
 session_start();
-session_destroy();
 
-header('Location:../index.php');
+
+require 'db.php';
+
+$t = date('h:i:a');
+$user = $_SESSION['username'];
+
+$sql = "UPDATE accounts SET logoutTime = '$t' WHERE username = '$user'";
+if($conn->query($sql)){
+    session_destroy();
+    header('Location:../index.php');
+}
+else{
+    header('Location:../index.php');
+}

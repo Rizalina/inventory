@@ -1,17 +1,18 @@
 <?php
-session_start();
+    session_start();
 
-if(!isset($_SESSION['username'])){
-    $m = "Please Login First!";
+    if(!isset($_SESSION['username'])){
+        $m = "Please Login First!";
 
-    echo "
+        echo "
             <script type = 'text/javascript'>
-                alert('$m');
-                window.location.replace('../index.php');
-            </script>
-         ";
+alert('$m');
+window.location.replace('../index.php');
+</script>
+";
 }
-?>
+    ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -46,7 +47,7 @@ if(!isset($_SESSION['username'])){
                 <a href="http://www.creative-tim.com" class="simple-text">
 
                     <?php
-                    echo $_SESSION['username'];
+                        echo $_SESSION['username'];
 
                     ?>
                 </a>
@@ -65,6 +66,12 @@ if(!isset($_SESSION['username'])){
                             <p>Items</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="issuance.php">
+                            <i class="material-icons">content_paste</i>
+                            <p>Issuance</p>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="accounts.php">
@@ -72,14 +79,14 @@ if(!isset($_SESSION['username'])){
                             <p>Accounts</p>
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="ppmp.php">
                             <i class="material-icons">library_books</i>
                             <p>PPMP</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="notifications.php">
+                    <li class="active">
+                        <a href="./notifications.html">
                             <i class="material-icons text-gray">notifications</i>
                             <p>Notifications</p>
                         </a>
@@ -97,7 +104,6 @@ if(!isset($_SESSION['username'])){
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Typography </a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -151,99 +157,76 @@ if(!isset($_SESSION['username'])){
                     </div>
                 </div>
             </nav>
-            <!-- Modal for add PPMP -->
-            <div class="modal col-lg-12" id="add_ppmp" data-backdrop="static">
-                <div class="modal-dialog" style="width:90%;">
-                    <div class="modal-content">
-                    </div>
-                </div>
-            </div>
-
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">PPMP</h4>
-                                    <p class="category">Officess with PPMP</p>
-                                </div>
-                                <div class="card-content table-responsive">
-                                    <table class="table">
-                                        <thead class="text-primary">
-                                        <th>Name</th>
-                                        <th>Country</th>
-                                        <th>City</th>
-                                        <th>Salary</th>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Dakota Rice</td>
-                                            <td>Niger</td>
-                                            <td>Oud-Turnhout</td>
-                                            <td class="text-primary">$36,738</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Minerva Hooper</td>
-                                            <td>Curaçao</td>
-                                            <td>Sinaai-Waas</td>
-                                            <td class="text-primary">$23,789</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sage Rodriguez</td>
-                                            <td>Netherlands</td>
-                                            <td>Baileux</td>
-                                            <td class="text-primary">$56,142</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Philip Chaney</td>
-                                            <td>Korea, South</td>
-                                            <td>Overland Park</td>
-                                            <td class="text-primary">$38,735</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Doris Greene</td>
-                                            <td>Malawi</td>
-                                            <td>Feldkirchen in Kärnten</td>
-                                            <td class="text-primary">$63,542</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mason Porter</td>
-                                            <td>Chile</td>
-                                            <td>Gloucester</td>
-                                            <td class="text-primary">$78,615</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <a href="../php/ppmp.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_ppmp">Add PPMP</a>
-                                </div>
+                    <div class="card">
+                        <div class="card-header" data-background-color="purple">
+                            <h4 class="title">Settings</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                            <div class="card-content table-responsive">
+                                                <table class="table table-hover">
+                                                    <thead class="text-warning">
+                                                    <th>Office</th>
+                                                    <th>Abbreviation</th>
+                                                    <th>FPP</th>
+                                                    <th>RESPONSIBILITY CENTER</th>
+                                                    <th>PROCESS</th>
+                                                    </thead>
+                                                    <tbody>
+                                                    <?php
+                                                    require '../php/db.php';
 
+                                                    $sql = "SELECT * FROM office";
 
+                                                    $res = $conn->query($sql);
+
+                                                    if($res->num_rows > 0){
+                                                        while($row = $res->fetch_assoc()){
+                                                            echo "<tr>" . "<td>" . $row['name'] . "</td>"
+                                                                . "<td>" . $row['abbr'] ."</td>"
+                                                                . "<td>" . $row['fpp'] . "</td>"
+                                                                . "<td>" . $row['responsibility'] ."</td>"
+                                                                . "<td>" . "<a href =" . '../php/editAccount.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs pull-right' data-toggle='modal' data-target='#edit_account'>
+                                                                        <i class='material-icons'>edit</i>
+                                                                    </a>" . "<a href =" . '../php/deleteAccount.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs pull-right' data-toggle='modal' data-target='#del_account'>
+                                                                        <i class='material-icons'>close</i>
+                                                                    </a>"
+                                                                ."</td>"
+                                                                . "</tr>"
+                                                            ;
+                                                        }
+                                                    }
+                                                    ?>
+                                                    </tbody>
+                                                </table>
+                                                <a href="../php/addAccount.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_account">Add Account</a>
+                                            </div>
+
+                                    </div>
+                                </div>
                             </div>
+                            <br>
+                            <br>
+
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </body>
 <!--   Core JS Files   -->
 <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
-<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/js/bootstrap.min.js" type=  "text/javascript"></script>
 <script src="../assets/js/material.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="../assets/js/chartist.min.js"></script>
-<!--  Dynamic Elements plugin -->
-<script src="../assets/js/arrive.min.js"></script>
 <!--  PerfectScrollbar Library -->
 <script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/bootstrap-notify.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/js/demo.js"></script>
 
 </html>

@@ -105,57 +105,50 @@ function addRowIssuance() {
     a.options[1] = new Option('02', '02')
     a.options[2] = new Option('03', '03')
     a.options[3] = new Option('04', '04')
-    a.name = 'code' + iteration
+    a.name = 'category[]'
     a.style = 'width:50px;'
     code.appendChild(a);
 
-    //Generate stockno Input
-    var stockno = row.insertCell(1)
-    var b = document.createElement('input')
-    b.type = "number"
-    b.name = 'stockno' + iteration
-    b.style = 'width:50px;'
-    stockno.appendChild(b);
+    //Generate Description Input
+    var des = row.insertCell(1)
+    var d = document.createElement('input')
+    d.type = "text"
+    d.name = 'description[]'
+    d.size = '50'
+    des.appendChild(d);
 
     //Generate Unit Input
     var unit = row.insertCell(2)
     var c = document.createElement('select')
-    c.options[0] = new Option('yeah', '01') // for loop
-    c.name = 'unit' + iteration
+    c.options[0] = new Option('yeah', 'ahah') // for loop
+    c.name = 'units[]'
     c.style = 'width:50px;'
     unit.appendChild(c);
-
-    //Generate Description Input
-    var des = row.insertCell(3)
-    var d = document.createElement('input')
-    d.type = "text"
-    d.name = 'des' + iteration
-    d.size = '45'
-    des.appendChild(d);
-
     //Generate Quantity Input
-    var quan = row.insertCell(4)
+    var quan = row.insertCell(3)
     var e = document.createElement('input')
     e.type = "number"
-    e.name = 'quantity' + iteration
-    e.style = 'width:162px;'
+    e.name = 'qRequested[]'
+    e.style = 'width:60px;'
     quan.appendChild(e);
 
     //Generate Quantity2 Input
-    var quan2 = row.insertCell(5)
+    var quan2 = row.insertCell(4)
     var f = document.createElement('input')
     f.type = "number"
-    f.name = 'quantity2' + iteration
-    f.style = 'width:162px;'
+    f.name = 'qIssued[]'
+    f.style = 'width:60px;'
     quan2.appendChild(f);
 
     //Generate Remarks Input
-    var remarks = row.insertCell(6)
+    var remarks = row.insertCell(5)
     var g = document.createElement('input')
     g.type = "text"
-    g.name = 'remarks' + iteration
-    g.size = '20'
+    g.name = 'remarks[]' + iteration
+    g.size = '30'
     remarks.appendChild(g);
+
+
 
 
 }
@@ -220,7 +213,55 @@ function checkNumber() {
     //Store the password field objects into variables ...
     var quan = document.getElementById('quantity');
     //Store the Confimation Message Object ...
-    var message = document.getElementById('confirmMessageC');
+    var message = document.getElementById('confirmMessageAA');
+    //Set the colors we will be using ...
+    var badColor = '#ff6666';
+    var goodColor = '#66cc66';
+    //Compare the values in the password field
+    //and the confirmation field
+    if (quan.value <= 0) {
+        //The passwords match.
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password
+        document.getElementById('submitD').disabled = true;
+        message.style.color = badColor;
+        message.innerHTML = 'Negative Numbers Not allowed!'
+    } else if (quan.value >= 0) {
+        document.getElementById('submitD').disabled = false;
+        message.style.color = goodColor;
+        message.innerHTML = '   '
+    }
+}
+
+function checkNumber2() {
+    //Store the password field objects into variables ...
+    var quan = document.getElementById('quantity2');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessageBB');
+    //Set the colors we will be using ...
+    var badColor = '#ff6666';
+    var goodColor = '#66cc66';
+    //Compare the values in the password field
+    //and the confirmation field
+    if (quan.value <= 0) {
+        //The passwords match.
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password
+        document.getElementById('submitD').disabled = true;
+        message.style.color = badColor;
+        message.innerHTML = 'Negative Numbers Not allowed!'
+    } else if (quan.value >= 0) {
+        document.getElementById('submitD').disabled = false;
+        message.style.color = goodColor;
+        message.innerHTML = '   '
+    }
+}
+
+function checkNumber3() {
+    //Store the password field objects into variables ...
+    var quan = document.getElementById('quantity3');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessageCC');
     //Set the colors we will be using ...
     var badColor = '#ff6666';
     var goodColor = '#66cc66';
@@ -271,3 +312,8 @@ function showUnitsPPMP() {
 }
 
 
+function autoFill() {
+    var a = document.getElementById("office").val();
+
+    alert("yeah");
+}

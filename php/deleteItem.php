@@ -7,13 +7,16 @@
  */
 
 require 'db.php';
+session_start();
+
+$temp = $_SESSION['temp'];
 $i = $_GET['n'];
 
-$sql = "DELETE FROM items WHERE stockno = '$i'";
+$sql = "DELETE FROM items WHERE id = '$i'";
 
 if($conn->query($sql)){
 
-    header("Location:../admin/items.php");
+    header("Location:../admin/$temp");
 
 }else{
     $m = "Failed to Delete Item, Contact Administrator!";
@@ -21,7 +24,7 @@ if($conn->query($sql)){
     echo "
             <script type = 'text/javascript'>
             alert('$m');
-            window.location.replace('../admin/items.php');
+            window.location.replace('../admin/$temp');
             </script>
             ";
 }

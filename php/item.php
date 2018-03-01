@@ -8,11 +8,14 @@
             <form action="../php/addItem.php" method="post">
                 <table class="table">
                     <thead class="text-primary">
-                    <th class="text-center">Code</th>
-                    <th class="text-center">Unit</th>
-                    <th class="text-center">General Description</th>
-                    <th class="text-center">Brand</th>
-                    <th class="text-center">Quantity</th>
+                    <th>Category</th>
+                    <th>ACCT-SN</th>
+                    <th>PGSO-SN</th>
+                    <th>DESCRIPTION</th>
+                    <th>UOM</th>
+                    <th>BRAND</th>
+                    <th>STARTING QUANTITY</th>
+                    <th>UNIT COST</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -25,29 +28,38 @@
                                 </select>
                             </td>
                             <td>
-                                <select name="unit" class="form-control">
-                                    <?php
-                                            require 'global.php';
+                                <input name="acct" placeholder="ACCT-SN" class="form-control" type="text" required>
 
-                                            showUnits();
-
-                                    ?>
-                                </select>
                             </td>
                             <td>
-                                <input type="text" placeholder="Description" name = "description" class="form-control" required>
+                                <input type="number" placeholder="PGSO-SN" name = "pgso" class="form-control" required>
                             </td>
                             <td>
-                                <input type="text" placeholder="Brand" name = "brand" class="form-control">
+                                <input type="text" placeholder="Description" name = "description" class="form-control" style="width:350px;">
                             </td>
                             <td>
-                                <input type="number" placeholder="Quantity" id = "quantity" onkeydown="NumberOnly();" onkeyup="checkNumber()" name = "quantity" class="form-control">
-                                <span id = "confirmMessageC"></span>
+                                <input type="text" placeholder="unit" name = "unit" class="form-control">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="brand" name = "brand" class="form-control">
+                            </td>
+                            <td>
+                                <input type="number" placeholder="starting" id = "quantity" onkeydown="NumberOnly();" onkeyup="checkNumber()" name = "sQuantity" class="form-control">
+                                <span id = "confirmMessageAA"></span>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="Cost" id = "quantity2" onkeydown="NumberOnly2();" onkeyup="checkNumber2()" name = "unitCost" class="form-control">
+                                <span id = "confirmMessageBB"></span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <a href="../admin/items.php" class='btn btn-primary pull-right' >Cancel</a>
+                <?php
+                    session_start();
+                    $temp = $_SESSION['temp'];
+                    echo "<a href='../admin/$temp' class='btn btn-primary pull-right' >Cancel</a>";
+                ?>
+
                 <input type="submit" value="Add" class="btn btn-primary pull-right" id="submitD">
             </form>
 

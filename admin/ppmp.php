@@ -85,7 +85,7 @@ if (!isset($_SESSION['username'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.php">
+                    <a href="settings.php">
                         <i class="material-icons text-gray">notifications</i>
                         <p>Notifications</p>
                     </a>

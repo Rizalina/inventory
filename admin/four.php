@@ -89,7 +89,7 @@ if(!isset($_SESSION['username'])){
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.php">
+                    <a href="settings.php">
                         <i class="material-icons text-gray">notifications</i>
                         <p>Notifications</p>
                     </a>
@@ -205,40 +205,48 @@ if(!isset($_SESSION['username'])){
                             <div class="card-content table-responsive">
                                 <table class="table">
                                     <thead class="text-primary">
-                                    <th>Code</th>
-                                    <th>Stock#</th>
-                                    <th>Unit</th>
-                                    <th>General Description</th>
-                                    <th>Brand</th>
-                                    <th>Quantity</th>
-                                    <th>Proccess</th>
+                                    <th>Category</th>
+                                    <th>ACCT-SN</th>
+                                    <th>PGSO-SN</th>
+                                    <th>ITEM DESCRIPTION</th>
+                                    <th>UOM</th>
+                                    <th>Starting Quantity</th>
+                                    <th>UNIT COST</th>
+                                    <th>BRAND</th>
+                                    <th>RO-P</th>
+                                    <th>Process</th>
                                     </thead>
                                     <tbody>
                                     <?php
                                     require '../php/db.php';
+                                    $_SESSION['temp'] =  basename($_SERVER['PHP_SELF']);
 
-                                    $sql = "SELECT * FROM items WHERE code = 04";
+                                    $sql = "SELECT * FROM items WHERE category = '04'";
                                     $res = $conn->query($sql);
                                     if($res->num_rows > 0){
                                         while($row = $res->fetch_assoc()){
                                             echo "<tr>"
-                                                . "<td>" . $row['code'] . "</td>"
-                                                . "<td>" . $row['stockno'] . "</td>"
-                                                . "<td>" . $row['unit'] . "</td>"
+                                                . "<td>" . $row['category'] . "</td>"
+                                                . "<td>" . $row['acctSn'] . "</td>"
+                                                . "<td>" . $row['pgsoSn'] . "</td>"
                                                 . "<td>" . $row['description'] . "</td>"
+                                                . "<td>" . $row['unit'] . "</td>"
+                                                . "<td>" . $row['startingQuantity'] . "</td>"
+                                                . "<td>" . $row['unitCost'] . "</td>"
                                                 . "<td>" . $row['brand'] . "</td>"
-                                                . "<td>" . $row['quantity'] . "</td>"
-                                                . "<td>" . "<a href =" . '../php/editItem.php?num='.$row['stockno'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
+                                                . "<td>" . $row['orderPoint'] . "</td>"
+                                                . "<td>" . "<a href =" . '../php/editItem.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_item'>
                                                                 <i class='material-icons'>edit</i>
-                                                            </a>" . "<a href =" . '../php/itemDelete.php?num='.$row['stockno'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal' data-target='#del_item'>
+                                                            </a>" . "<a href =" . '../php/itemDelete.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal'  data-target='#del_item'>
                                                                 <i class='material-icons'>close</i>
                                                             </a>"
                                                 ."</td>"
                                                 . "</tr>";
                                         }
 
+
                                     }else{
-                                        echo "<tr><td>No records in the database!</td></tr>";
+                                        echo "<td><p>No records in the database!</p></td>";
                                     }
 
                                     ?>

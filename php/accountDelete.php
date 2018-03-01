@@ -31,7 +31,7 @@ if($r[0] == "user"){
             ";
     }
 }else{
-    $m = "Failed to Delete Administrator Account, Contact Administrator!";
+    $m = "Failed to Delete Administrator Account!";
 
     echo "
             <script type = 'text/javascript'>

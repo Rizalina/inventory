@@ -94,7 +94,7 @@ if(!isset($_SESSION['username'])){
                         </a>
                     </li>
                     <li>
-                        <a href="notifications.php">
+                        <a href="settings.php">
                             <i class="material-icons text-gray">notifications</i>
                             <p>Notifications</p>
                         </a>
@@ -158,16 +158,7 @@ if(!isset($_SESSION['username'])){
                                 </ul>
                             </li>
                         </ul>
-                        <form class="navbar-form navbar-right" role="search">
-                            <div class="form-group  is-empty">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="material-input"></span>
-                            </div>
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                <i class="material-icons">search</i>
-                                <div class="ripple-container"></div>
-                            </button>
-                        </form>
+
                     </div>
                 </div>
             </nav>
@@ -189,9 +180,7 @@ if(!isset($_SESSION['username'])){
             <div class="modal col-lg-12" id="edit_account" data-backdrop="static">
                 <div class="modal-dialog" style="width:80%;">
                     <div class="modal-content">
-                            <?php
-                            //include "../php/editAccount.php";
-                            ?>
+
                     </div>
                     </div>
             </div>
@@ -223,30 +212,30 @@ if(!isset($_SESSION['username'])){
                                             <th>Name</th>
                                             <th>Username</th>
                                             <th>Password</th>
-                                            <th>Created</th>
-                                            <th>Last Login</th>
+                                            <th>Time Login</th>
+                                            <th>Time Logout</th>
                                             <th>Type</th>
-                                            <th>Proccess</th>
+                                            <th></th>
                                             </thead>
                                             <tbody>
                                             <?php
                                             require '../php/db.php';
 
-                                            $sql = "SELECT id,first_name,last_name,username,password,created,date_login,time_login,userType FROM accounts";
+                                            $sql = "SELECT id,fullname,username,password,loginTime,logoutTime,userType FROM accounts";
 
                                             $res = $conn->query($sql);
 
                                             if($res->num_rows > 0){
                                                 while($row = $res->fetch_assoc()){
-                                                    echo "<tr>" . "<td>" . ucwords($row['first_name']) . " "  . ucwords($row['last_name']) . "</td>"
+                                                    echo "<tr>" . "<td>" . ucwords($row['fullname']). "</td>"
                                                         . "<td>" . $row['username'] ."</td>"
                                                         . "<td>" . $row['password'] ."</td>"
-                                                        . "<td>" . $row['created'] ."</td>"
-                                                        . "<td>" . $row['date_login'] .','. $row['time_login'] ."</td>"
+                                                        . "<td>" . $row['loginTime'] ."</td>"
+                                                        . "<td>" . $row['logoutTime'] ."</td>"
                                                         . "<td>" . $row['userType'] ."</td>"
-                                                        . "<td>" . "<a href =" . '../php/editAccount.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_account'>
+                                                        . "<td>" . "<a href =" . '../php/editAccount.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs pull-right' data-toggle='modal' data-target='#edit_account'>
                                                                 <i class='material-icons'>edit</i>
-                                                            </a>" . "<a href =" . '../php/deleteAccount.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal' data-target='#del_account'>
+                                                            </a>" . "<a href =" . '../php/deleteAccount.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs pull-right' data-toggle='modal' data-target='#del_account'>
                                                                 <i class='material-icons'>close</i>
                                                             </a>"
                                                         ."</td>"

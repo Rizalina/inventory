@@ -6,30 +6,33 @@
  * Time: 5:17 PM
  */
 require 'db.php';
+session_start();
+$temp = $_SESSION['temp'];
 
-$code = $_POST['code'];
-$unit = $_POST['unit'];
+$category = $_POST['code'];
+$acct = $_POST['acct'];
+$pgso = $_POST['pgso'];
 $des = $_POST['description'];
+$unit = $_POST['unit'];
 $brand = $_POST['brand'];
-$quan = $_POST['quantity'];
+$quan = $_POST['sQuantity'];
+$cost = $_POST['unitCost'];
+$level = floor($quan * .2);
 
 
-$sql = "INSERT INTO items(code,unit,description,brand,quantity) VALUES (?,?,?,?,?)";
 
-$st = $conn->prepare($sql);
-$st->bind_param('isssi',$code,$unit,$des,$brand,$quan);
-$st->execute();
+$sql = "INSERT INTO items(category,acctSn,pgsoSn,description,unit,startingQuantity,unitCost,brand,orderPoint) 
+VALUES('$category','$acct','$pgso','$des','$unit','$quan','$cost','$brand','$level')";
 
-
-if($st->errno == 0){
+if($conn->query($sql)){
     header("Location:../admin/items.php");
 }else{
-    $m = "Error Adding Item! Please contact administrator!";
+    $m = "Error Adding Item! Please contact administrator!" ;
 
     echo "
             <script type = 'text/javascript'>
             alert('$m');
-            window.location.replace('../admin/$t');
+            window.location.replace('../admin/$temp');
             </script>
             ";
 }

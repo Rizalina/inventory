@@ -10,15 +10,15 @@ require 'db.php';
 
 $first = $_POST['first'];
 $last = $_POST['last'];
+$fullname = $first . ' ' . $last;
 $type = $_POST['type'];
 $username = $_POST['username'];
 $pass = $_POST['pass'];
 
-$t = date('h:i:a');
-$d = date('Y:n:j');
 
-$sql = "INSERT into ACCOUNTS(id,first_name,last_name,username,password,created,date_login,userType,time_login)
-        VALUES(null,'$first','$last','$username','$pass',CURRENT_TIMESTAMP,null,'$type',null)";
+
+$sql = "INSERT into ACCOUNTS(fullname,username,password,userType)
+        VALUES('$fullname','$username','$pass','$type')";
 
 if($conn->query($sql)){
 
@@ -26,7 +26,7 @@ if($conn->query($sql)){
             window.location.replace('../admin/accounts.php');
         </script>";
 
-}else
+}else {
     $m = "Error! Contact Administrator!";
 
     echo "<script type='text/javascript'>
@@ -34,3 +34,4 @@ if($conn->query($sql)){
             alert('$m');
             window.location.replace('../admin/accounts.php');
         </script>";
+}
