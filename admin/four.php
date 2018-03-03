@@ -47,7 +47,7 @@ if(!isset($_SESSION['username'])){
     Tip 2: you can also add an image using data-image tag
 -->
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
+            <a href="#" class="simple-text">
 
                 <?php
                 echo $_SESSION['username'];
@@ -70,6 +70,18 @@ if(!isset($_SESSION['username'])){
                     </a>
                 </li>
                 <li>
+                    <a href="order.php">
+                        <i class="material-icons">library_books</i>
+                        <p>Re-order</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="expire.php">
+                        <i class="material-icons">library_books</i>
+                        <p>To-Expire</p>
+                    </a>
+                </li>
+                <li>
                     <a href="issuance.php">
                         <i class="material-icons">content_paste</i>
                         <p>Issuance</p>
@@ -89,9 +101,15 @@ if(!isset($_SESSION['username'])){
                     </a>
                 </li>
                 <li>
-                    <a href="settings.php">
+                    <a href="offices.php">
                         <i class="material-icons text-gray">notifications</i>
-                        <p>Notifications</p>
+                        <p>Offices</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="supplier.php">
+                        <i class="material-icons">library_books</i>
+                        <p>Suppliers</p>
                     </a>
                 </li>
             </ul>
@@ -188,6 +206,16 @@ if(!isset($_SESSION['username'])){
 
         <div class="modal col-lg-12" id="del_item" data-backdrop="static">
             <div class="modal-dialog" style="width:27%;">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Edit Item -->
+
+        <div class="modal col-lg-12" id="edit_item" data-backdrop="static">
+            <div class="modal-dialog" style="width:99%;">
                 <div class="modal-content">
 
                 </div>
