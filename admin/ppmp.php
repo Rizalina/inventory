@@ -20,7 +20,7 @@ if (!isset($_SESSION['username'])) {
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"/>
     <link rel="icon" type="image/png" href="../assets/img/favicon.png"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Material Dashboard by Creative Tim</title>
+    <title>General Services Office</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
     <!-- Bootstrap core CSS     -->
@@ -44,7 +44,7 @@ if (!isset($_SESSION['username'])) {
     Tip 2: you can also add an image using data-image tag
 -->
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
+            <a href="#" class="simple-text">
 
                 <?php
                 echo $_SESSION['username'];
@@ -67,6 +67,18 @@ if (!isset($_SESSION['username'])) {
                     </a>
                 </li>
                 <li>
+                    <a href="order.php">
+                        <i class="material-icons">library_books</i>
+                        <p>Re-order</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="expire.php">
+                        <i class="material-icons">library_books</i>
+                        <p>To-Expire</p>
+                    </a>
+                </li>
+                <li>
                     <a href="issuance.php">
                         <i class="material-icons">content_paste</i>
                         <p>Issuance</p>
@@ -85,9 +97,15 @@ if (!isset($_SESSION['username'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="settings.php">
+                    <a href="offices.php">
                         <i class="material-icons text-gray">notifications</i>
-                        <p>Notifications</p>
+                        <p>Offices</p>
+                    </a>
+                </li>
+				<li>
+                    <a href="supplier.php">
+                        <i class="material-icons">library_books</i>
+                        <p>Suppliers</p>
                     </a>
                 </li>
             </ul>
@@ -103,7 +121,7 @@ if (!isset($_SESSION['username'])) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"> Typography </a>
+                    <a class="navbar-brand" href="#">  </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -144,16 +162,7 @@ if (!isset($_SESSION['username'])) {
                             </a>
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-right" role="search">
-                        <div class="form-group  is-empty">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <span class="material-input"></span>
-                        </div>
-                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                            <i class="material-icons">search</i>
-                            <div class="ripple-container"></div>
-                        </button>
-                    </form>
+                    
                 </div>
             </div>
         </nav>
@@ -203,14 +212,8 @@ if (!isset($_SESSION['username'])) {
 <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../assets/js/material.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="../assets/js/chartist.min.js"></script>
-<!--  Dynamic Elements plugin -->
-<script src="../assets/js/arrive.min.js"></script>
 <!--  PerfectScrollbar Library -->
 <script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/bootstrap-notify.js"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Custom JS -->
