@@ -47,7 +47,7 @@ if(!isset($_SESSION['username'])){
     Tip 2: you can also add an image using data-image tag
 -->
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
+            <a href="#" class="simple-text">
 
                 <?php
                 echo $_SESSION['username'];
@@ -70,6 +70,18 @@ if(!isset($_SESSION['username'])){
                     </a>
                 </li>
                 <li>
+                    <a href="order.php">
+                        <i class="material-icons">library_books</i>
+                        <p>Re-order</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="expire.php">
+                        <i class="material-icons">library_books</i>
+                        <p>To-Expire</p>
+                    </a>
+                </li>
+                <li>
                     <a href="issuance.php">
                         <i class="material-icons">content_paste</i>
                         <p>Issuance</p>
@@ -89,9 +101,15 @@ if(!isset($_SESSION['username'])){
                     </a>
                 </li>
                 <li>
-                    <a href="settings.php">
+                    <a href="offices.php">
                         <i class="material-icons text-gray">notifications</i>
-                        <p>Notifications</p>
+                        <p>Offices</p>
+                    </a>
+                </li>
+				<li>
+                    <a href="supplier.php">
+                        <i class="material-icons">library_books</i>
+                        <p>Suppliers</p>
                     </a>
                 </li>
             </ul>
@@ -193,6 +211,16 @@ if(!isset($_SESSION['username'])){
                 </div>
             </div>
         </div>
+
+        <!-- Modal for Edit Item -->
+
+        <div class="modal col-lg-12" id="edit_item" data-backdrop="static">
+            <div class="modal-dialog" style="width:99%;">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -267,16 +295,11 @@ if(!isset($_SESSION['username'])){
 <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../assets/js/material.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="../assets/js/chartist.min.js"></script>
-<!--  Dynamic Elements plugin -->
-<script src="../assets/js/arrive.min.js"></script>
+
 <!--  PerfectScrollbar Library -->
 <script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/bootstrap-notify.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Custom JS -->
