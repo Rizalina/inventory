@@ -29,7 +29,7 @@ if(!isset($_SESSION['username'])){
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Material Dashboard by Creative Tim</title>
+    <title>General Services Office</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->
@@ -52,7 +52,7 @@ if(!isset($_SESSION['username'])){
         Tip 2: you can also add an image using data-image tag
     -->
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="#" class="simple-text">
 
                     <?php
                     echo $_SESSION['username'];
@@ -75,6 +75,18 @@ if(!isset($_SESSION['username'])){
                         </a>
                     </li>
                     <li>
+                        <a href="order.php">
+                            <i class="material-icons">library_books</i>
+                            <p>Re-order</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="expire.php">
+                            <i class="material-icons">library_books</i>
+                            <p>To-Expire</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="issuance.php">
                             <i class="material-icons">content_paste</i>
                             <p>Issuance</p>
@@ -94,9 +106,15 @@ if(!isset($_SESSION['username'])){
                         </a>
                     </li>
                     <li>
-                        <a href="settings.php">
+                        <a href="offices.php">
                             <i class="material-icons text-gray">notifications</i>
-                            <p>Notifications</p>
+                            <p>Offices</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="supplier.php">
+                            <i class="material-icons">library_books</i>
+                            <p>Suppliers</p>
                         </a>
                     </li>
                 </ul>
@@ -212,8 +230,8 @@ if(!isset($_SESSION['username'])){
                                             <th>Name</th>
                                             <th>Username</th>
                                             <th>Password</th>
-                                            <th>Time Login</th>
-                                            <th>Time Logout</th>
+                                            <th>Time-in</th>
+                                            <th>Time-out</th>
                                             <th>Type</th>
                                             <th></th>
                                             </thead>
@@ -221,13 +239,13 @@ if(!isset($_SESSION['username'])){
                                             <?php
                                             require '../php/db.php';
 
-                                            $sql = "SELECT id,fullname,username,password,loginTime,logoutTime,userType FROM accounts";
+                                            $sql = "SELECT id,lastName,firstName,username,password,loginTime,logoutTime,userType FROM accounts";
 
                                             $res = $conn->query($sql);
 
                                             if($res->num_rows > 0){
                                                 while($row = $res->fetch_assoc()){
-                                                    echo "<tr>" . "<td>" . ucwords($row['fullname']). "</td>"
+                                                    echo "<tr>" . "<td>" . ucwords($row['firstName'] . " " . $row['lastName']). "</td>"
                                                         . "<td>" . $row['username'] ."</td>"
                                                         . "<td>" . $row['password'] ."</td>"
                                                         . "<td>" . $row['loginTime'] ."</td>"
@@ -265,19 +283,11 @@ if(!isset($_SESSION['username'])){
 <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../assets/js/material.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="../assets/js/chartist.min.js"></script>
-<!--  Dynamic Elements plugin -->
-<script src="../assets/js/arrive.min.js"></script>
 <!--  PerfectScrollbar Library -->
 <script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/bootstrap-notify.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
-<-- Custome JS -->
+<!-- Custome JS -->
 <script src="../assets/js/custom.js"></script>
 
 
