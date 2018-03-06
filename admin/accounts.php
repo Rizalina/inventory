@@ -31,7 +31,7 @@
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body class="theme-blue">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -62,27 +62,53 @@
             </div>
         </div>
     </nav>
+       <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="accounts.php">
+                <?php
+                session_start();
+                echo strtoupper($_SESSION['username']);
+
+                ?>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right pull-right">
+
+
+
+                    <!-- Notifications -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">format_align_justify</i>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                                    <li>
+                                        <a href="../php/logout.php">
+                                                <h4>Logout</h4>
+                                        </a>
+                                    </li>
+
+
+                        </ul>
+                    </li>
+                    <!-- #END# Notifications -->
+
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
                     <li>
                         <a href="dashboard.php">
                             <i class="material-icons">dashboard</i>
@@ -90,14 +116,14 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a href="../pages/accounts.php">
-                            <i class="material-icons">text_fields</i>
+                        <a href="accounts.php">
+                            <i class="material-icons">people</i>
                             <span>Accounts</span>
                         </a>
                     </li>
                     <li>
                         <a href="issuance.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">store_mall_directory</i>
                             <span>Issuance</span>
                         </a>
                     </li>
@@ -108,8 +134,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pages/ppmp.php">
-                            <i class="material-icons">local_shipping</i>
+                        <a href="ppmp.php">
+                            <i class="material-icons">event_note</i>
                             <span>PPMP</span>
                         </a>
                     </li>

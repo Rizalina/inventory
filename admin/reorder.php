@@ -4,32 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>REORDER</title>
+    <title>Reorder</title>
 
     <!-- Favicon-->
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="../../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="../../plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="../../plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Custom Css -->
-    <link href="../../css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="../../css/themes/all-themes.css" rel="stylesheet" />
+    <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body class="theme-blue">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -47,16 +50,43 @@
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="dashboard.php">GENERAL SERVICES OFFICE</a>
+
+                <a class="navbar-brand" href="reorder.php">
+                <?php
+                session_start();
+                echo strtoupper($_SESSION['username']);
+
+                ?>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right pull-right">
+
+
+
+                    <!-- Notifications -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">format_align_justify</i>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                                    <li>
+                                        <a href="../php/logout.php">
+                                                <h4>Logout</h4>
+                                        </a>
+                                    </li>
+
+
+                        </ul>
+                    </li>
+                    <!-- #END# Notifications -->
+
+                </ul>
             </div>
         </div>
     </nav>
@@ -64,23 +94,9 @@
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
                     <li>
                         <a href="dashboard.php">
                             <i class="material-icons">dashboard</i>
@@ -88,14 +104,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/accounts.php">
-                            <i class="material-icons">text_fields</i>
+                        <a href="accounts.php">
+                            <i class="material-icons">people</i>
                             <span>Accounts</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/helper-classes.html">
-                            <i class="material-icons">layers</i>
+                        <a href="issuance.php">
+                            <i class="material-icons">store_mall_directory</i>
                             <span>Issuance</span>
                         </a>
                     </li>
@@ -107,7 +123,7 @@
                     </li>
                     <li>
                         <a href="ppmp.php">
-                            <i class="material-icons">local_shipping</i>
+                            <i class="material-icons">event_note</i>
                             <span>PPMP</span>
                         </a>
                     </li>
@@ -356,61 +372,61 @@
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>ACCOUNTS</h2>
+                <h2>REORDER</h2>
             </div>
             <!-- Basic Table -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="body table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                       <th>Category</th>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>CATEGORY</th>
                                             <th>ACCT-SN</th>
-                                            <th>PGSO-SN</th>
                                             <th>ITEM DESCRIPTION</th>
                                             <th>UOM</th>
-                                            <th>Starting Quantity</th>
+                                            <th>STARTING QUANTITY</th>
                                             <th>UNIT COST</th>
                                             <th>BRAND</th>
                                             <th>RO-P</th>
-                                            <th>Process</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>Larry</td>
-                                        <td>Jellybean</td>
-                                        <td>@lajelly</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>Larry</td>
-                                        <td>Kikat</td>
-                                        <td>@lakitkat</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            <th>PROCESS</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <?php
+                                        $conn = new mysqli("localhost","root","","inventory");
+                                        if(!$conn){
+                                            echo "Error Connecting to database !" . $conn->error;
+                                        }
+
+                                        $sql = "SELECT * FROM issuance";
+                                        $res = $conn->query($sql);
+
+                                        if($res){
+                                            while($row = $res->fetch_assoc()){
+                                                echo "<tr>"
+                                                    . "<td>" . $row['division'] ."</td>"
+                                                    . "<td>" . $row['office'] ."</td>"
+                                                    . "<td>" . $row['responsibility'] ."</td>"
+                                                    . "<td>" . $row['dateT'] ."</td>"
+                                                    . "<td>" . $row['typeT'] ."</td>"
+                                                    . "<td>" . $row['status'] ."</td>"
+                                                    . "<td>" . $row['status'] ."</td>"
+                                                    . "<td>" . $row['status'] ."</td>"
+                                                    . "<td>" . "<a href=" .'../php/admin/editReorder.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#edit_account'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/deleteReorder.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#del_account'>delete</a>" . "</td>";
+                                                echo "</tr>";
+                                            }
+
+                                        }
+
+                                    ?>
+                                    </tbody>
+                                </table>
+                                <a href="../php/admin/addIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_account">Add Reorder</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -419,25 +435,37 @@
     </section>
 
     <!-- Jquery Core Js -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core Js -->
-    <script src="../../plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.js"></script>
 
     <!-- Select Plugin Js -->
-    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
     <!-- Slimscroll Plugin Js -->
-    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
     <!-- Waves Effect Plugin Js -->
-    <script src="../../plugins/node-waves/waves.js"></script>
+    <script src="../plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
     <!-- Custom Js -->
-    <script src="../../js/admin.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/pages/tables/jquery-datatable.js"></script>
 
     <!-- Demo Js -->
-    <script src="../../js/demo.js"></script>
+    <script src="../js/demo.js"></script>
 </body>
 
 </html>

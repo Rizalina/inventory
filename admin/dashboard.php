@@ -32,14 +32,24 @@
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
-
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-
-    <!-- #END# Search Bar -->
+<body class="theme-blue">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -54,10 +64,6 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                <h2 class="info-container pull-left" >
-
-
-                </h2>
                 <ul class="nav navbar-nav navbar-right pull-right">
 
 
@@ -101,13 +107,13 @@
                     </li>
                     <li>
                         <a href="accounts.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">people</i>
                             <span>Accounts</span>
                         </a>
                     </li>
                     <li>
                         <a href="issuance.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">store_mall_directory</i>
                             <span>Issuance</span>
                         </a>
                     </li>
@@ -119,7 +125,7 @@
                     </li>
                     <li>
                         <a href="ppmp.php">
-                            <i class="material-icons">local_shipping</i>
+                            <i class="material-icons">event_note</i>
                             <span>PPMP</span>
                         </a>
                     </li>
@@ -411,7 +417,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-light-green hover-expand-effect">
                         <div class="icon">
-                            <i class="material-icons">forum</i>
+                            <i class="material-icons">remove_shopping_cart</i>
                         </div>
                         <div class="content">
                             <div class="text">REORDER</div>
@@ -430,7 +436,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-orange hover-expand-effect">
                         <div class="icon">
-                            <i class="material-icons">person_add</i>
+                            <i class="material-icons">people</i>
                         </div>
                         <div class="content">
                             <div class="text">USERS</div>
@@ -451,7 +457,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-black hover-expand-effect">
                         <div class="icon">
-                            <i class="material-icons">devices</i>
+                            <i class="material-icons">autorenew</i>
                         </div>
                         <div class="content">
                             <div class="text">RETURNS</div>
@@ -462,7 +468,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-yellow hover-expand-effect">
                         <div class="icon">
-                            <i class="material-icons">favorite</i>
+                            <i class="material-icons">store_mall_directory</i>
                         </div>
                         <div class="content">
                             <div class="text">ISSUANCE</div>
@@ -479,20 +485,28 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-gray hover-expand-effect">
+                    <div class="info-box bg-blue-grey hover-expand-effect">
                         <div class="icon">
-                            <i class="material-icons">devices</i>
+                            <i class="material-icons">local_shipping</i>
                         </div>
                         <div class="content">
-                            <div class="text">REORDER</div>
-                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="text">SUPPLIERS</div>
+                            <?php
+
+                            require '../php/db.php';
+                            $sql = "SELECT COUNT(id) FROM suppliers";
+                            $res = $conn->query($sql);
+                            $r = $res->fetch_row();
+
+                            echo "<div class='number count-to' data-from='0' data-to='$r[0]'' data-speed='15' data-fresh-interval='20'></div>";
+                            ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-brown hover-expand-effect">
                         <div class="icon">
-                            <i class="material-icons">gps_fixed</i>
+                            <i class="material-icons">location_city</i>
                         </div>
                         <div class="content">
                             <div class="text">OFFICES</div>
