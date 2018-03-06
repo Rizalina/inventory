@@ -1,243 +1,509 @@
-<?php
-session_start();
-
-if(!isset($_SESSION['username'])){
-    $m = "Please Login First!";
-
-    echo "
-            <script type = 'text/javascript'>
-            alert('$m');
-            window.location.replace('../index.php');
-            </script>
-            ";
-}
-?>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Issuance</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-    <!-- Bootstrap core CSS     -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <!--  Material Dashboard CSS    -->
-    <link href="../assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="../assets/css/demo.css" rel="stylesheet" />
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
-    <style>
-        #new_issuance {
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
-        }
-    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body>
-<div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
-        <!--
-    Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+<body class="theme-red">
 
-    Tip 2: you can also add an image using data-image tag
--->
-        <div class="logo">
-            <a href="#" class="simple-text">
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="dashboard.php">GENERAL SERVICES OFFICE</a>
+            </div>
+           
+                        <ul class="dropdown-menu">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">person_add</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>12 new members joined</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 14 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-cyan">
+                                                <i class="material-icons">add_shopping_cart</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>4 sales made</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 22 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-red">
+                                                <i class="material-icons">delete_forever</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy Doe</b> deleted account</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-orange">
+                                                <i class="material-icons">mode_edit</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy</b> changed name</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 2 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-blue-grey">
+                                                <i class="material-icons">comment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> commented your post</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 4 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">cached</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> updated status</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-purple">
+                                                <i class="material-icons">settings</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Settings updated</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> Yesterday
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="javascript:void(0);">View All Notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Notifications -->
 
-                <?php
-                echo $_SESSION['username'];
-
-                ?>
-            </a>
+                </ul>
+            </div>
         </div>
-        <div class="sidebar-wrapper">
-            <ul class="nav">
-                <li>
-                    <a href="dashboard.php">
-                        <i class="material-icons">dashboard</i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="items.php">
-                        <i class="material-icons">content_paste</i>
-                        <p>Items</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="order.php">
-                        <i class="material-icons">library_books</i>
-                        <p>Re-order</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="expire.php">
-                        <i class="material-icons">library_books</i>
-                        <p>To-Expire</p>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="issuance.php">
-                        <i class="material-icons">content_paste</i>
-                        <p>Issuance</p>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="accounts.php">
-                        <i class="material-icons">person</i>
-                        <p>Accounts</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="ppmp.php">
-                        <i class="material-icons">library_books</i>
-                        <p>PPMP</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="offices.php">
-                        <i class="material-icons text-gray">notifications</i>
-                        <p>Offices</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="supplier.php">
-                        <i class="material-icons text-gray">library_books</i>
-                        <p>Suppliers</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="main-panel">
-        <nav class="navbar navbar-transparent navbar-absolute">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"> Profile </a>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="../../images/user.png" width="48" height="48" alt="User" />
                 </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="material-icons">dashboard</i>
-                                <p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="material-icons">notifications</i>
-                                <span class="notification">5</span>
-                                <p class="hidden-lg hidden-md">Notifications</p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">Mike John responded to your email</a>
-                                </li>
-                                <li>
-                                    <a href="#">You have 5 new tasks</a>
-                                </li>
-                                <li>
-                                    <a href="#">You're now friend with Andrew</a>
-                                </li>
-                                <li>
-                                    <a href="#">Another Notification</a>
-                                </li>
-                                <li>
-                                    <a href="#">Another One</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="material-icons">person</i>
-                                <p class="hidden-lg hidden-md">Profile</p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href = "../php/logout.php">Logout</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
+                    <div class="email">john.doe@example.com</div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li role="seperator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                            <li role="seperator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </nav>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li>
+                        <a href="dashboard.php">
+                            <i class="material-icons">home</i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="accounts.php">
+                            <i class="material-icons">text_fields</i>
+                            <span>Accounts</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="issuance.php">
+                            <i class="material-icons">layers</i>
+                            <span>Issuance</span>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="reorder.php">
+                            <i class="material-icons">layers</i>
+                            <span>Re-order</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/ppmp.php">
+                            <i class="material-icons">local_shipping</i>
+                            <span>PPMP</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Widgets</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Cards</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="../pages/widgets/cards/basic.html">Basic</a>
+                                    </li>
+                                    <li>
+                                        <a href="../pages/widgets/cards/colored.html">Colored</a>
+                                    </li>
+                                    <li>
+                                        <a href="../pages/widgets/cards/no-header.html">No Header</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Infobox</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="../pages/widgets/infobox/infobox-1.html">Infobox-1</a>
+                                    </li>
+                                    <li>
+                                        <a href="../pages/widgets/infobox/infobox-2.html">Infobox-2</a>
+                                    </li>
+                                    <li>
+                                        <a href="../pages/widgets/infobox/infobox-3.html">Infobox-3</a>
+                                    </li>
+                                    <li>
+                                        <a href="../pages/widgets/infobox/infobox-4.html">Infobox-4</a>
+                                    </li>
+                                    <li>
+                                        <a href="../pages/widgets/infobox/infobox-5.html">Infobox-5</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">swap_calls</i>
+                            <span>User Interface (UI)</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="../pages/ui/alerts.html">Alerts</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/animations.html">Animations</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/badges.html">Badges</a>
+                            </li>
 
+                            <li>
+                                <a href="../pages/ui/breadcrumbs.html">Breadcrumbs</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/buttons.html">Buttons</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/collapse.html">Collapse</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/colors.html">Colors</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/dialogs.html">Dialogs</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/icons.html">Icons</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/labels.html">Labels</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/list-group.html">List Group</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/media-object.html">Media Object</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/modals.html">Modals</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/notifications.html">Notifications</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/pagination.html">Pagination</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/preloaders.html">Preloaders</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/progressbars.html">Progress Bars</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/range-sliders.html">Range Sliders</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/sortable-nestable.html">Sortable & Nestable</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/tabs.html">Tabs</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/thumbnails.html">Thumbnails</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/tooltips-popovers.html">Tooltips & Popovers</a>
+                            </li>
+                            <li>
+                                <a href="../pages/ui/waves.html">Waves</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">assignment</i>
+                            <span>Forms</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="../pages/forms/basic-form-elements.html">Basic Form Elements</a>
+                            </li>
+                            <li>
+                                <a href="../pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                            </li>
+                            <li>
+                                <a href="../pages/forms/form-examples.html">Form Examples</a>
+                            </li>
+                            <li>
+                                <a href="../pages/forms/form-validation.html">Form Validation</a>
+                            </li>
+                            <li>
+                                <a href="../pages/forms/form-wizard.html">Form Wizard</a>
+                            </li>
+                            <li>
+                                <a href="../pages/forms/editors.html">Editors</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">view_list</i>
+                            <span>Tables</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="../pages/tables/normal-tables.html">Normal Tables</a>
+                            </li>
+                            <li>
+                                <a href="tables/jquery-datatable.php">Jquery Datatables</a>
+                            </li>
+                            <li>
+                                <a href="../pages/tables/editable-table.html">Editable Tables</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">pie_chart</i>
+                            <span>Charts</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="../pages/charts/morris.html">Morris</a>
+                            </li>
+                            <li>
+                                <a href="../pages/charts/flot.html">Flot</a>
+                            </li>
+                            <li>
+                                <a href="../pages/charts/chartjs.html">ChartJS</a>
+                            </li>
+                            <li>
+                                <a href="../pages/charts/sparkline.html">Sparkline</a>
+                            </li>
+                            <li>
+                                <a href="../pages/charts/jquery-knob.html">Jquery Knob</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">content_copy</i>
+                            <span>Example Pages</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="../pages/examples/sign-in.html">Sign In</a>
+                            </li>
+                            <li>
+                                <a href="../pages/examples/sign-up.html">Sign Up</a>
+                            </li>
+                            <li>
+                                <a href="../pages/examples/forgot-password.html">Forgot Password</a>
+                            </li>
+                            <li>
+                                <a href="../pages/examples/blank.html">Blank Page</a>
+                            </li>
+                            <li>
+                                <a href="../pages/examples/404.html">404 - Not Found</a>
+                            </li>
+                            <li>
+                                <a href="../pages/examples/500.html">500 - Server Error</a>
+                            </li>
+                        </ul>
+                    </li>
+              
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">trending_down</i>
+                            <span>Multi Level Menu</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <span>Menu Item</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <span>Menu Item - 2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Level - 2</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <span>Menu Item</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="menu-toggle">
+                                            <span>Level - 3</span>
+                                        </a>
+                                        <ul class="ml-menu">
+                                            <li>
+                                                <a href="javascript:void(0);">
+                                                    <span>Level - 4</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="changelogs.html">
+                            <i class="material-icons">update</i>
+                            <span>Changelogs</span>
+                        </a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <!-- #Menu -->
+            
+        </aside>
+        <!-- #END# Left Sidebar -->
 
-
-        <!-- Modal for Add Account -->
-        <div class="modal col-lg-12" id="add_account" data-backdrop="static">
-            <div class="modal-dialog" style="width:80%;">
+        <!-- Modal for Add Issuance -->
+        <div class="modal col-lg-12" id="add_issuance" data-backdrop="static">
+            <div class="modal-dialog" style="width:90%;">
                 <div class="modal-content">
-                    <?php
-                    include "../php/addAccount.php";
-                    ?>
-                </div>
-            </div>
-        </div>
-        <!-- Modal for Edit Account -->
-
-        <div class="modal col-lg-12" id="edit_account" data-backdrop="static">
-            <div class="modal-dialog" style="width:80%;">
-                <div class="modal-content">
                 </div>
             </div>
         </div>
 
-        <!-- Modal for Add New Issuance -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Text Styles -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2 class="text-center">
+                                Issuance
+                            </h2>
 
-        <div class="modal col-lg-12" id="new_issuance" data-backdrop="static">
-            <div class="modal-dialog" style="width:99%;">
-                <div class="modal-content">
-
-                </div>
-            </div>
-        </div>
-        <!-- Modal for Edit Issuance -->
-        <div class="modal col-lg-12" id="edit_issuance" data-backdrop="static">
-            <div class="modal-dialog" style="width:99%;">
-                <div class="modal-content">
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal for Delete Issuance -->
-
-        <div class="modal col-lg-12" id="delete_issuance" data-backdrop="static">
-            <div class="modal-dialog" style="width:27%;">
-                <div class="modal-content">
-
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 pull-right">
-                        <div class="card">
-                            <div class="card-header" data-background-color="blue">
-                                <h4 class="title">Issuance's</h4>
-                            </div>
-
+                        </div>
                             <div class="card-content">
                                 <div class="card-content table-responsive">
                                     <table class="table">
@@ -250,65 +516,35 @@ if(!isset($_SESSION['username'])){
                                         <th>Proccess</th>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                                require '../php/db.php';
 
-                                                $sql = "SELECT id,division,office,responsibility,dateT,timeT,typeT,status FROM issuance ";
-
-                                                $res = $conn->query($sql);
-
-                                                if($res){
-                                                    while ($row = $res->fetch_assoc()){
-                                                        echo "<tr>"
-                                                            . "<td>" .$row['division']. "</td>"
-                                                            . "<td>" .$row['office']. "</td>"
-                                                            . "<td>" .$row['responsibility']. "</td>"
-                                                            . "<td>" .$row['dateT']. " " . $row['timeT'] . "</td>"
-                                                            . "<td>" .$row['typeT']. "</td>"
-                                                            . "<td>" .$row['status']. "</td>"
-                                                            . "<td>" . "<a href =" . '../php/editIssuance.php?num='.$row['id'] . " " . " type='button' rel='tooltip' title='Edit ' class='btn btn-primary btn-simple btn-xs' data-toggle='modal' data-target='#edit_issuance'>
-                                                                <i class='material-icons'>edit</i>
-                                                            </a>" . "<a href =" . '../php/issueDelete.php?num='.$row['id'] . " " . "type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs' data-toggle='modal'  data-target='#edit_issuance'>
-                                                                <i class='material-icons'>close</i>
-                                                            </a>"
-                                                            ."</td>"
-                                                            . "</tr>";
-                                                    }
-                                                }
-                                            ?>
                                         </tbody>
                                     </table>
-                                    <a href="../php/addNewIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#new_issuance">New Issuance</a>
-                                </div>
+                                    <a href="../php/admin/addNewIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_issuance">Add Issuance</a>
+            <!-- #END# Text Styles -->
 
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
         </div>
+    </section>
 
-    </div>
-</div>
+    <!-- Jquery Core Js -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="../plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../plugins/node-waves/waves.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../js/admin.js"></script>
+
+    <!-- Demo Js -->
+    <script src="../js/demo.js"></script>
 </body>
-<!--   Core JS Files   -->
-<script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
-<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../assets/js/material.min.js" type="text/javascript"></script>
-<script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
-<-- Custome JS -->
-<script src="../assets/js/custom.js"></script>
-
-<script>
-    function autoFill() {
-        var a = document.getElementById("office").val();
-
-        alert("yeah");
-    }
-</script>
-
-
 
 </html>
