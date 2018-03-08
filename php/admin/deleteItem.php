@@ -6,7 +6,7 @@
  * Time: 9:00 PM
  */
 
-require 'db.php';
+require '../db.php';
 session_start();
 
 $temp = $_SESSION['temp'];
@@ -16,7 +16,7 @@ $sql = "DELETE FROM items WHERE id = '$i'";
 
 if($conn->query($sql)){
 
-    header("Location:../admin/$temp");
+    header("Location:../../admin/$temp");
 
 }else{
     $m = "Failed to Delete Item, Contact Administrator!";
@@ -24,7 +24,7 @@ if($conn->query($sql)){
     echo "
             <script type = 'text/javascript'>
             alert('$m');
-            window.location.replace('../admin/$temp');
+            window.location.replace('../../admin/$temp');
             </script>
             ";
 }

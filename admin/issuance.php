@@ -287,7 +287,7 @@
                                 <a href="../pages/tables/normal-tables.html">Normal Tables</a>
                             </li>
                             <li>
-                                <a href="tables/jquery-datatable.php">Jquery Datatables</a>
+                                <a href="raos.php">Jquery Datatables</a>
                             </li>
                             <li>
                                 <a href="../pages/tables/editable-table.html">Editable Tables</a>
@@ -403,24 +403,51 @@
         <!-- #END# Left Sidebar -->
 
         <!-- Modal for Add Issuance -->
-        <div class="modal col-lg-12" id="add_issuance" data-backdrop="static">
+        <div class="modal col-lg-12" id="addIssuance" data-backdrop="static">
             <div class="modal-dialog" style="width:90%;">
                 <div class="modal-content">
                 </div>
             </div>
         </div>
 
+        <!-- Modal for Edit Issuance -->
+    <div class="modal col-lg-12" id="editIssuance" data-backdrop="static">
+        <div class="modal-dialog" style="width:100%;">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Delete Issuance -->
+    <div class="modal col-lg-12" id="deleteIssuance" data-backdrop="static">
+        <div class="modal-dialog" style="width:20%;">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+
     <section class="content">
         <div class="container-fluid">
-            <div class="block-header">
-                <h2>ISSUANCE</h2>
-            </div>
             <!-- Basic Examples -->
             <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 ">
                     <div class="card">
+                        <div class="header">
+                            <h2 class="text-center">Pending Issuances</h2>
+                            <div class="dropdown show">
+                                <a href="issuance.php" class="btn btn-secondary" >
+                                    PENDING
+                                </a>
+                                <a href="issuanceApproved.php" class="btn btn-secondary" >
+                                    APPROVED
+                                </a>
+
+
+                            </div>
+                        </div>
                         <div class="body">
-                            <div class="table-responsive">
+                            <div class="body table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
@@ -429,8 +456,7 @@
                                             <th>Responsibility Center</th>
                                             <th>Date/Time</th>
                                             <th>Category</th>
-                                            <th>Remarks</th>
-                                            <th>Status</t>
+                                            <th>Status</th>
                                             <th>Process</th>
                                         </tr>
                                     </thead>
@@ -442,7 +468,9 @@
                                             echo "Error Connecting to database !" . $conn->error;
                                         }
 
-                                        $sql = "SELECT * FROM issuance";
+                                        $_SESSION['temp'] =  basename($_SERVER['PHP_SELF']);
+
+                                        $sql = "SELECT * FROM issuance WHERE status = 'pending'";
                                         $res = $conn->query($sql);
 
                                         if($res){
@@ -453,21 +481,18 @@
                                                     . "<td>" . $row['responsibility'] ."</td>"
                                                     . "<td>" . $row['dateT'] ."</td>"
                                                     . "<td>" . $row['typeT'] ."</td>"
-                                                    . "<td>" . $row['remarks'] ."</td>"
-                                                    . "<td>" . $row['status'] ."</td>"
-                                                    . "<td>" . "<a href=" .'../php/admin/editIssuance.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#edit_account'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/deleteIssuance.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#del_account'>delete</a>" . "</td>";
+                                                    . "<td>" . $row['status'] .  "</td>" 
+
+                                                    . "<td>" . "<a href=" .'../php/admin/modal/viewIssuance.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#editIssuance'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/modal/issueDelete.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#deleteIssuance'>delete</a>" . "</td>";
                                                 echo "</tr>";
                                             }
 
                                         }
 
-
-
-
                                     ?>
                                     </tbody>
                                 </table>
-                                <a href="../php/admin/addIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_account">Add Issuance</a>
+                                <a href="../php/admin/modal/addNewIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#editIssuance">Add Issuance</a>
                             </div>
                         </div>
                     </div>
@@ -507,8 +532,10 @@
     <script src="../js/admin.js"></script>
     <script src="../js/pages/tables/jquery-datatable.js"></script>
 
-    <!-- Demo Js -->
-    <script src="../js/demo.js"></script>
+    <script src="../js/custom.js"></script>
+
+
+
 </body>
 
 </html>

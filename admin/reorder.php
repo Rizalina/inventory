@@ -128,6 +128,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="supplier.php">
+                            <i class="material-icons">event_note</i>
+                            <span>Supplier</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
                             <span>Widgets</span>
@@ -287,7 +293,7 @@
                                 <a href="../pages/tables/normal-tables.html">Normal Tables</a>
                             </li>
                             <li>
-                                <a href="tables/jquery-datatable.php">Jquery Datatables</a>
+                                <a href="raos.php">Jquery Datatables</a>
                             </li>
                             <li>
                                 <a href="../pages/tables/editable-table.html">Editable Tables</a>
@@ -368,28 +374,34 @@
         </aside>
         <!-- #END# Left Sidebar -->
     </section>
+     <!-- Modal for Edit Reorder -->
+    <div class="modal col-lg-12" id="edit_reorder" data-backdrop="static">
+        <div class="modal-dialog" style="width:99%;" >
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
 
     <section class="content">
         <div class="container-fluid">
-            <div class="block-header">
-                <h2>REORDER</h2>
-            </div>
             <!-- Basic Table -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
+                        <div class="header">
+                            <h2 class="text-center">RE-ORDER</h2>
+                        </div>
                         <div class="body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
                                             <th>CATEGORY</th>
-                                            <th>ACCT-SN</th>
                                             <th>ITEM DESCRIPTION</th>
                                             <th>UOM</th>
-                                            <th>STARTING QUANTITY</th>
                                             <th>UNIT COST</th>
                                             <th>BRAND</th>
+                                            <th>STARTING QUANTITY</th>
                                             <th>RO-P</th>
                                             <th>PROCESS</th>
                                         </tr>
@@ -402,21 +414,20 @@
                                             echo "Error Connecting to database !" . $conn->error;
                                         }
 
-                                        $sql = "SELECT * FROM issuance";
+                                        $sql = "SELECT * FROM items WHERE startingQuantity <= orderPoint";
                                         $res = $conn->query($sql);
 
                                         if($res){
                                             while($row = $res->fetch_assoc()){
                                                 echo "<tr>"
-                                                    . "<td>" . $row['division'] ."</td>"
-                                                    . "<td>" . $row['office'] ."</td>"
-                                                    . "<td>" . $row['responsibility'] ."</td>"
-                                                    . "<td>" . $row['dateT'] ."</td>"
-                                                    . "<td>" . $row['typeT'] ."</td>"
-                                                    . "<td>" . $row['status'] ."</td>"
-                                                    . "<td>" . $row['status'] ."</td>"
-                                                    . "<td>" . $row['status'] ."</td>"
-                                                    . "<td>" . "<a href=" .'../php/admin/editReorder.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#edit_account'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/deleteReorder.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#del_account'>delete</a>" . "</td>";
+                                                    . "<td>" . $row['category'] ."</td>"
+                                                    . "<td>" . $row['description'] ."</td>"
+                                                    . "<td>" . $row['unit'] ."</td>"
+                                                    . "<td>" . $row['startingQuantity'] ."</td>"
+                                                    . "<td>" . $row['unitCost'] ."</td>"
+                                                    . "<td>" . $row['brand'] ."</td>"
+                                                    . "<td>" . $row['orderPoint'] ."</td>"
+                                                    . "<td>" . "<a href=" .'../php/admin/modal/editReorder.php?num=' .$row['id'] . "  " . " class='material-icons text-center' data-toggle='modal' data-target='#edit_reorder'>mode_edit</a>" . "</td>";
                                                 echo "</tr>";
                                             }
 
@@ -425,7 +436,7 @@
                                     ?>
                                     </tbody>
                                 </table>
-                                <a href="../php/admin/addIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_account">Add Reorder</a>
+                            
                             </div>
                         </div>
                     </div>

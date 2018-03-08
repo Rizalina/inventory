@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Dashboard</title>
+    <title>Sparkline | Bootstrap Based Admin Template - Material Design</title>
     <!-- Favicon-->
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
@@ -22,9 +21,6 @@
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
 
-    <!-- Morris Chart Css-->
-    <link href="../plugins/morrisjs/morris.css" rel="stylesheet" />
-
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
 
@@ -32,588 +28,410 @@
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-blue">
-    <!-- Page Loader -->
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-            <p>Please wait...</p>
-        </div>
-    </div>
-    <!-- #END# Page Loader -->
-    <!-- Top Bar -->
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
+<body class="theme-red">
 
-                <a class="navbar-brand" href="dashboard.php">
+
+<!-- Top Bar -->
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="dashboard.php">
                 <?php
                 session_start();
                 echo strtoupper($_SESSION['username']);
 
                 ?>
-                </a>
+            </a>
+
+        </div>
+        <div class="navbar-header text-center">
+            <a class="navbar-brand" href="dashboard.php">
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;General Services Office
+            </a>
+
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right pull-right">
+                <!-- Notifications -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        <i class="material-icons">format_align_justify</i>
+                    </a>
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="../php/logout.php">
+                                <h4>Logout</h4>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </li>
+                <!-- #END# Notifications -->
+
+            </ul>
+        </div>
+
+    </div>
+</nav>
+<!-- #Top Bar -->
+<section>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar">
+
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list">
+
+                <li class="active">
+                    <a href="dashboard.php">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="accounts.php">
+                        <i class="material-icons">people</i>
+                        <span>Accounts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="issuance.php">
+                        <i class="material-icons">store_mall_directory</i>
+                        <span>Issuance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reorder.php">
+                        <i class="material-icons">error</i>
+                        <span>Re-order</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="supplier.php">
+                        <i class="material-icons">local_shipping</i>
+                        <span>Suppliers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ppmp.php">
+                        <i class="material-icons">event_note</i>
+                        <span>PPMP</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span>Items</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="items.php"><strong>Category 1</strong></a>
+                        </li>
+                        <li>
+                            <a href="two.php"><strong>Category 2</strong></a>
+                        </li>
+                        <li>
+                            <a href="three.php"><strong>Category 3</strong></a>
+                        </li>
+                        <li>
+                            <a href="four.php"><strong>Category 4</strong></a>
+                        </li>
+                        <li>
+                            <a href="five.php"><strong>Category 5</strong></a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">view_list</i>
+                        <span>Reports</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="raos.php"><strong>RAOS</strong></a>
+                        </li>
+                        <li>
+                            <a href="rosi.php"><strong>ROSI</strong></a>
+                        </li>
+                        <li>
+                            <a href="ssmi.php"><strong>SSMI</strong></a>
+                        </li>
+                        <li>
+                            <a href="stockcard.php"><strong>STOCK CARD</strong></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">pie_chart</i>
+                        <span>Settings</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="charts/morris.html">Morris</a>
+                        </li>
+                        <li>
+                            <a href="charts/flot.html">Flot</a>
+                        </li>
+                        <li>
+                            <a href="charts/chartjs.html">ChartJS</a>
+                        </li>
+                        <li>
+                            <a href="charts/sparkline.html">Sparkline</a>
+                        </li>
+                        <li>
+                            <a href="charts/jquery-knob.html">Jquery Knob</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+        </div>
+        <!-- #Menu -->
+
+    </aside>
+    <!-- #END# Left Sidebar -->
+
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+        </div>
+        <div class="row clearfix">
+
+            <!-- Bar Chart -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2 class="text-center">ISSUANCES</h2>
+                    </div>
+                    <div class="body">
+                        <div class="sparkline" data-type="bar" data-width="100%" data-height="150px" data-bar-Width="60" data-bar-Spacing="20" data-bar-Color="rgb(0, 188, 212)">
+                            1,2,3,4,5,6,7,8,9,10,11,12
+                        </div>
+
+                    </div>
+
+                    <pre>    JAN         FEB        MAR       APRIL        MAY       JUNE       JULY       AUG         SEPT       OCT         NOV        DEC</pre>
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right pull-right">
+            <!-- #END# Bar Chart -->
 
+            <!-- #END# Pie Chart -->
+        </div>
+        <!-- Widgets -->
+        <div class="row clearfix">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-red hover-expand-effect">
+                    <div class="icon">
+                        <a href="items.php"><i class="material-icons">shopping_cart</i></a>
+                    </div>
+                    <div class="content">
+                        <div class="text">ITEMS</div>
+                        <?php
 
+                        require '../php/db.php';
+                        $sql = "SELECT COUNT(id) FROM items";
+                        $res = $conn->query($sql);
+                        $r = $res->fetch_row();
 
-                    <!-- Notifications -->
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <i class="material-icons">format_align_justify</i>
-                        </a>
-                        <ul class="dropdown-menu">
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        ?>
 
-                                    <li>
-                                        <a href="../php/logout.php">
-                                                <h4>Logout</h4>
-                                        </a>
-                                    </li>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-cyan hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">access_alarm</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">TO EXPIRE</div>
+                        <?php
 
+                        require '../php/db.php';
+                        $sql = "SELECT COUNT(id) FROM items WHERE orderPoint >= startingQuantity";
+                        $res = $conn->query($sql);
+                        $r = $res->fetch_row();
 
-                        </ul>
-                    </li>
-                    <!-- #END# Notifications -->
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-light-green hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">remove_shopping_cart</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">REORDER</div>
+                        <?php
 
-                </ul>
+                        require '../php/db.php';
+                        $sql = "SELECT COUNT(id) FROM items WHERE orderPoint >= startingQuantity";
+                        $res = $conn->query($sql);
+                        $r = $res->fetch_row();
+
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-orange hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">people</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">USERS</div>
+                        <?php
+
+                        require '../php/db.php';
+                        $sql = "SELECT COUNT(id) FROM accounts";
+                        $res = $conn->query($sql);
+                        $r = $res->fetch_row();
+
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-    <!-- #Top Bar -->
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-
-            <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-
-                    <li class="active">
-                        <a href="dashboard.php">
-                            <i class="material-icons">dashboard</i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="accounts.php">
-                            <i class="material-icons">people</i>
-                            <span>Accounts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="issuance.php">
-                            <i class="material-icons">store_mall_directory</i>
-                            <span>Issuance</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="reorder.php">
-                            <i class="material-icons">local_shipping</i>
-                            <span>Re-order</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ppmp.php">
-                            <i class="material-icons">event_note</i>
-                            <span>PPMP</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
-                            <span>Items</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Cards</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="widgets/cards/basic.html">Basic</a>
-                                    </li>
-                                    <li>
-                                        <a href="widgets/cards/colored.html">Colored</a>
-                                    </li>
-                                    <li>
-                                        <a href="widgets/cards/no-header.html">No Header</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Infobox</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="widgets/infobox/infobox-1.html">Infobox-1</a>
-                                    </li>
-                                    <li>
-                                        <a href="widgets/infobox/infobox-2.html">Infobox-2</a>
-                                    </li>
-                                    <li>
-                                        <a href="widgets/infobox/infobox-3.html">Infobox-3</a>
-                                    </li>
-                                    <li>
-                                        <a href="widgets/infobox/infobox-4.html">Infobox-4</a>
-                                    </li>
-                                    <li>
-                                        <a href="widgets/infobox/infobox-5.html">Infobox-5</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">swap_calls</i>
-                            <span>User Interface (UI)</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="ui/alerts.html">Alerts</a>
-                            </li>
-                            <li>
-                                <a href="ui/animations.html">Animations</a>
-                            </li>
-                            <li>
-                                <a href="ui/badges.html">Badges</a>
-                            </li>
-
-                            <li>
-                                <a href="ui/breadcrumbs.html">Breadcrumbs</a>
-                            </li>
-                            <li>
-                                <a href="ui/buttons.html">Buttons</a>
-                            </li>
-                            <li>
-                                <a href="ui/collapse.html">Collapse</a>
-                            </li>
-                            <li>
-                                <a href="ui/colors.html">Colors</a>
-                            </li>
-                            <li>
-                                <a href="ui/dialogs.html">Dialogs</a>
-                            </li>
-                            <li>
-                                <a href="ui/icons.html">Icons</a>
-                            </li>
-                            <li>
-                                <a href="ui/list-group.html">List Group</a>
-                            </li>
-                            <li>
-                                <a href="ui/media-object.html">Media Object</a>
-                            </li>
-                            <li>
-                                <a href="ui/modals.html">Modals</a>
-                            </li>
-                            <li>
-                                <a href="ui/notifications.html">Notifications</a>
-                            </li>
-                            <li>
-                                <a href="ui/pagination.html">Pagination</a>
-                            </li>
-                            <li>
-                                <a href="ui/preloaders.html">Preloaders</a>
-                            </li>
-                            <li>
-                                <a href="ui/progressbars.html">Progress Bars</a>
-                            </li>
-                            <li>
-                                <a href="ui/range-sliders.html">Range Sliders</a>
-                            </li>
-                            <li>
-                                <a href="ui/sortable-nestable.html">Sortable & Nestable</a>
-                            </li>
-                            <li>
-                                <a href="ui/tabs.html">Tabs</a>
-                            </li>
-                            <li>
-                                <a href="ui/thumbnails.html">Thumbnails</a>
-                            </li>
-                            <li>
-                                <a href="ui/tooltips-popovers.html">Tooltips & Popovers</a>
-                            </li>
-                            <li>
-                                <a href="ui/waves.html">Waves</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
-                            <span>Forms</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="forms/basic-form-elements.html">Basic Form Elements</a>
-                            </li>
-                            <li>
-                                <a href="forms/advanced-form-elements.html">Advanced Form Elements</a>
-                            </li>
-                            <li>
-                                <a href="forms/form-examples.html">Form Examples</a>
-                            </li>
-                            <li>
-                                <a href="forms/form-validation.html">Form Validation</a>
-                            </li>
-                            <li>
-                                <a href="forms/form-wizard.html">Form Wizard</a>
-                            </li>
-                            <li>
-                                <a href="forms/editors.html">Editors</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">view_list</i>
-                            <span>Tables</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="tables/normal-tables.html">Normal Tables</a>
-                            </li>
-                            <li>
-                                <a href="tables/jquery-datatable.php">Jquery Datatables</a>
-                            </li>
-                            <li>
-                                <a href="tables/editable-table.html">Editable Tables</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">pie_chart</i>
-                            <span>Charts</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="charts/morris.html">Morris</a>
-                            </li>
-                            <li>
-                                <a href="charts/flot.html">Flot</a>
-                            </li>
-                            <li>
-                                <a href="charts/chartjs.html">ChartJS</a>
-                            </li>
-                            <li>
-                                <a href="charts/sparkline.html">Sparkline</a>
-                            </li>
-                            <li>
-                                <a href="charts/jquery-knob.html">Jquery Knob</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">content_copy</i>
-                            <span>Example Pages</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="examples/sign-in.html">Sign In</a>
-                            </li>
-                            <li>
-                                <a href="examples/sign-up.html">Sign Up</a>
-                            </li>
-                            <li>
-                                <a href="examples/forgot-password.html">Forgot Password</a>
-                            </li>
-                            <li>
-                                <a href="examples/blank.html">Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="examples/404.html">404 - Not Found</a>
-                            </li>
-                            <li>
-                                <a href="examples/500.html">500 - Server Error</a>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                        </ul>
-                    </li>
-                    
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="changelogs.html">
-                            <i class="material-icons">update</i>
-                            <span>Changelogs</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- #Menu -->
-            
-        </aside>
-        <!-- #END# Left Sidebar -->
-
-    </section>
-
-    <section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                <h2>DASHBOARD</h2>
-            </div>
-
-            <!-- Widgets -->
-            <div class="row clearfix">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-red hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">shopping_cart</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">ITEMS</div>
-                            <?php
-
-                            require '../php/db.php';
-                            $sql = "SELECT COUNT(id) FROM items";
-                            $res = $conn->query($sql);
-                            $r = $res->fetch_row();
-
-                            echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
-                            ?>
-
-                        </div>
+        <div class="row clearfix">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-black hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">autorenew</i>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-cyan hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">access_alarm</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">TO EXPIRE</div>
-                            <?php
-
-                            require '../php/db.php';
-                            $sql = "SELECT COUNT(id) FROM items WHERE orderPoint >= startingQuantity";
-                            $res = $conn->query($sql);
-                            $r = $res->fetch_row();
-
-                            echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-light-green hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">remove_shopping_cart</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">REORDER</div>
-                            <?php
-
-                            require '../php/db.php';
-                            $sql = "SELECT COUNT(id) FROM items WHERE orderPoint >= startingQuantity";
-                            $res = $conn->query($sql);
-                            $r = $res->fetch_row();
-
-                            echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-orange hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">people</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">USERS</div>
-                            <?php
-
-                            require '../php/db.php';
-                            $sql = "SELECT COUNT(id) FROM accounts";
-                            $res = $conn->query($sql);
-                            $r = $res->fetch_row();
-
-                            echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
-                            ?>
-                        </div>
+                    <div class="content">
+                        <div class="text">RETURNS</div>
+                        <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
-			<div class="row clearfix">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-black hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">autorenew</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">RETURNS</div>
-                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
-                        </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-yellow hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">store_mall_directory</i>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-yellow hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">store_mall_directory</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">ISSUANCE</div>
-                            <?php
+                    <div class="content">
+                        <div class="text">ISSUANCE</div>
+                        <?php
 
-                            require '../php/db.php';
-                            $sql = "SELECT COUNT(id) FROM issuance";
-                            $res = $conn->query($sql);
-                            $r = $res->fetch_row();
+                        require '../php/db.php';
+                        $sql = "SELECT COUNT(id) FROM issuance";
+                        $res = $conn->query($sql);
+                        $r = $res->fetch_row();
 
-                            echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-blue-grey hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">local_shipping</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">SUPPLIERS</div>
-                            <?php
-
-                            require '../php/db.php';
-                            $sql = "SELECT COUNT(id) FROM suppliers";
-                            $res = $conn->query($sql);
-                            $r = $res->fetch_row();
-
-                            echo "<div class='number count-to' data-from='0' data-to='$r[0]'' data-speed='15' data-fresh-interval='20'></div>";
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-brown hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">location_city</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">OFFICES</div>
-                            <?php
-
-                            require '../php/db.php';
-                            $sql = "SELECT COUNT(id) FROM office";
-                            $res = $conn->query($sql);
-                            $r = $res->fetch_row();
-
-                            echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
-                            ?>
-                        </div>
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        ?>
                     </div>
                 </div>
             </div>
-            <!-- #END# Widgets -->
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-blue-grey hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">local_shipping</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">SUPPLIERS</div>
+                        <?php
 
-            <div class="row clearfix">
-                <!-- Task Info -->
+                        require '../php/db.php';
+                        $sql = "SELECT COUNT(id) FROM suppliers";
+                        $res = $conn->query($sql);
+                        $r = $res->fetch_row();
 
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>TRANSACTIONS</h2>
-                        </div>
-                        <div class="body">
-                            <div class="table-responsive">
-                                <table class="table table-hover dashboard-task-infos">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Username</th>
-                                            <th>Login</th>
-                                            <th>Type</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    require '../php/db.php';
-                                    $sql = "SELECT * FROM accounts";
-                                    $res = $conn->query($sql);
-
-                                    if($res){
-                                        while ($row = $res->fetch_assoc()){
-                                            echo  "<tr>";
-                                            echo "<td>" . strtoupper($row['lastName'] . " " . $row['firstName']) . "</td>";
-                                            echo "<td>" . $row['username'] . "</td>";
-                                            echo "<td>" . $row['loginTime'] . "</td>";
-                                            echo "<td>" . $row['userType'] . "</td>";
-                                            echo "</tr>";
-                                        }
-                                    }
-
-                                    ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]'' data-speed='15' data-fresh-interval='20'></div>";
+                        ?>
                     </div>
                 </div>
-                <!-- #END# Task Info -->
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-brown hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">location_city</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">OFFICES</div>
+                        <?php
+
+                        require '../php/db.php';
+                        $sql = "SELECT COUNT(id) FROM office";
+                        $res = $conn->query($sql);
+                        $r = $res->fetch_row();
+
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+        <div class="row clearfix">
+            <!-- Task Info -->
 
-    <!-- Jquery Core Js -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>TRANSACTIONS</h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover dashboard-task-infos">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Login</th>
+                                    <th>Type</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-    <!-- Bootstrap Core Js -->
-    <script src="../plugins/bootstrap/js/bootstrap.js"></script>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Task Info -->
+        </div>
 
-    <!-- Select Plugin Js -->
-    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    </div>
+</section>
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- Jquery Core Js -->
+<script src="../plugins/jquery/jquery.min.js"></script>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="../plugins/node-waves/waves.js"></script>
+<!-- Bootstrap Core Js -->
+<script src="../plugins/bootstrap/js/bootstrap.js"></script>
 
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="../plugins/jquery-countto/jquery.countTo.js"></script>
+<!-- Select Plugin Js -->
+<script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
-    <!-- Morris Plugin Js -->
-    <script src="../plugins/raphael/raphael.min.js"></script>
-    <script src="../plugins/morrisjs/morris.js"></script>
+<!-- Slimscroll Plugin Js -->
+<script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
-    <!-- ChartJs -->
-    <script src="../plugins/chartjs/Chart.bundle.js"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="../plugins/node-waves/waves.js"></script>
 
-    <!-- Flot Charts Plugin Js -->
-    <script src="../plugins/flot-charts/jquery.flot.js"></script>
-    <script src="../plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="../plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="../plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="../plugins/flot-charts/jquery.flot.time.js"></script>
+<!-- Sparkline Plugin Js -->
+<script src="../plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="../plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<!-- Custom Js -->
+<script src="../js/admin.js"></script>
+<script src="../js/pages/charts/sparkline.js"></script>
 
-    <!-- Custom Js -->
-    <script src="../js/admin.js"></script>
-    <script src="../js/pages/index.js"></script>
+<!-- Demo Js -->
+<script src="../js/demo.js"></script>
 
-    <!-- Demo Js -->
-    <script src="../js/demo.js"></script>
 </body>
 
 </html>

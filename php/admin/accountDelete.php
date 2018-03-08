@@ -21,14 +21,7 @@ if($r[0] == "user"){
     $sql = "DELETE FROM accounts WHERE id = '$i'";
 
     if($conn->query($sql)) {
-        $m = "Successfully Deleted!";
-
-        echo "
-            <script type = 'text/javascript'>
-            alert('$m');
-            window.location.replace('../../admin/accounts.php');
-            </script>
-            ";
+        header('Location:../../admin/accounts.php');
     }
 }else{
     $m = "Failed to Delete Administrator Account!";

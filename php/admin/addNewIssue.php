@@ -6,7 +6,7 @@
  * Time: 9:49 AM
  */
 
-require 'db.php';
+require '../db.php';
 
 $ti = date('h:i:a');
 
@@ -83,5 +83,5 @@ $remarks = $_POST['remarks'];
             }
 
 
-            header('Location:../admin/issuance.php');
+            header('Location:../../admin/issuance.php');
 

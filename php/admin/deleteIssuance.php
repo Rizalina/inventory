@@ -6,15 +6,18 @@
  * Time: 9:00 PM
  */
 
-require 'db.php';
+require '../db.php';
 $i = $_GET['n'];
+session_start();
+
+$temp = $_SESSION['temp'];
 
 $sql = "DELETE FROM issuance WHERE id = '$i'";
 
 if($conn->query($sql)){
     $sql = "DELETE FROM itemissuance WHERE issue_id = '$i'";
     $conn->query($sql);
-    header("Location:../admin/issuance.php");
+    header("Location:../../admin/$temp");
 
 }else{
     $m = "Failed to Delete Issuance, Contact Administrator!";
@@ -22,7 +25,7 @@ if($conn->query($sql)){
     echo "
             <script type = 'text/javascript'>
             alert('$m');
-            window.location.replace('../admin/issuance.php');
+            window.location.replace('../../admin/issuance.php');
             </script>
             ";
 }

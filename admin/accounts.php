@@ -299,7 +299,7 @@
                                 <a href="../pages/tables/normal-tables.html">Normal Tables</a>
                             </li>
                             <li>
-                                <a href="tables/jquery-datatable.php">Jquery Datatables</a>
+                                <a href="raos.php">Jquery Datatables</a>
                             </li>
                             <li>
                                 <a href="../pages/tables/editable-table.html">Editable Tables</a>
@@ -443,7 +443,7 @@
                                         echo "<td>" . $row['loginTime'] . "</td>";
                                         echo "<td>" . $row['logoutTime'] . "</td>";
                                         echo "<td>" . $row['userType'] . "</td>";
-                                        echo "<td>" . "<a href=" .'../php/admin/editAccount.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#edit_account'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/deleteAccount.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#del_account'>delete</a>" . "</td>";
+                                        echo "<td>" . "<a href=" .'../php/admin/editAccount.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#edit_account'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/modal/deleteAccount.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#del_account'>delete</a>" . "</td>";
                                         echo "</tr>";
                                     }
                                 }
@@ -451,7 +451,7 @@
                                 ?>
                                 </tbody>
                             </table>
-                            <a href="../php/admin/addAccount.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_account">Add Account</a>
+                            <a href="../php/admin/modal/addAccount.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_account">Add Account</a>
                         </div>
                     </div>
                 </div>

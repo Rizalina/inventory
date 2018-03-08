@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>PPMP</title>
-
+	
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
@@ -31,7 +31,6 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
-
 <body class="theme-blue">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -287,7 +286,7 @@
                                 <a href="../pages/tables/normal-tables.html">Normal Tables</a>
                             </li>
                             <li>
-                                <a href="tables/jquery-datatable.php">Jquery Datatables</a>
+                                <a href="raos.php">Jquery Datatables</a>
                             </li>
                             <li>
                                 <a href="../pages/tables/editable-table.html">Editable Tables</a>
@@ -368,30 +367,38 @@
         </aside>
         <!-- #END# Left Sidebar -->
     </section>
-
+   <div class="modal col-lg-12" id="add_ppmp" data-backdrop="static">
+            <div class="modal-dialog" style="width:90%;">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
                 <h2>PPMP</h2>
             </div>
+			
             <!-- Basic Table -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="body">
                             <div class="table-responsive">
+				
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-                                            <th>CATEGORY</th>
-                                            <th>ACCT-SN</th>
-                                            <th>ITEM DESCRIPTION</th>
-                                            <th>UOM</th>
-                                            <th>STARTING QUANTITY</th>
-                                            <th>UNIT COST</th>
-                                            <th>BRAND</th>
-                                            <th>RO-P</th>
-                                            <th>PROCESS</th>
+                                            <th>Code</th>
+                            <th>General Description</th>
+                            <th>Unit</th>
+                            <th>Quantity/Size</th>
+                            <th>Unit Cost</th>
+                            <th>Estimated Budget</th>
+                            <th>Q1</th>
+                            <th>Q2</th>
+                            <th>Q3</th>
+                            <th>Q4</th>
                                         </tr>
                                     </thead>
 
@@ -425,7 +432,12 @@
                                     ?>
                                     </tbody>
                                 </table>
-                                <a href="../php/admin/addIssuance.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_account">Add PPMP</a>
+								
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+                                <a href="../php/admin/addPPMP.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_ppmp">Add PPMP</a>
                             </div>
                         </div>
                     </div>

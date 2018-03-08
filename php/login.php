@@ -38,7 +38,7 @@ if($res->num_rows > 0){
     if($r[1]=="admin") {
         header('Location:../admin/dashboard.php');
     }elseif($r[1]=="user"){
-        header('Location:../user/items.php');
+        header('Location:../user/addItem.php');
 
     }else{
         $m="error login";
