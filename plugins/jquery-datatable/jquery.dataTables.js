@@ -761,8 +761,8 @@
 		{
 			this.api( true ).order( aaSort ).draw();
 		};
-		
-		
+
+
 		/**
 		 * Attach a sort listener to an element for a given column
 		 *  @param {node} nNode the element to attach the sort listener to

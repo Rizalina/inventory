@@ -7,75 +7,50 @@
                     ADD NEW USER
                 </h2>
             </div>
-            <form action="../php/admin/addNewUser.php" method="post">
-                <div class="body">
-                    <div class="row clearfix">
+            <form action="../php/admin/addAccount.php" method="post">
+                <table class="table">
+                    <thead class="text-primary">
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>password</th>
+                    <th>User Type</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <input name="first" class="form-control" type="text" required>
+                        </td>
+                        <td>
+                            <input name="last" class="form-control" type="text" required>
+                        </td>
+                        <td>
+                            <input name="username" class="form-control" type="text" required>
+                        </td>
+                        <td>
+                            <input name="pass" class="form-control" type="text" required>
+                        </td>
+                        <td>
+                            <select name="type" class="form-control">
+                                <option>User</option>
+                                <option>Admin</option>
+                            </select>
+                        </td>
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>First Name</label>
-                                    <input type="text" name="first" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="modal-footer">
+                    <div class="text-center">
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Last Name</label>
-                                    <input type="text" name="last" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Username</label>
-                                    <input type="text" name="username" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
+                        <input type="submit" value="Add" class="btn btn-primary " id="submitD">
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>User Type</label>
-                                    <select name="type" class="form-control">
-                                        <option>User</option>
-                                        <option>Admin</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+
+                        <a href="../admin/accounts.php" class="btn btn-primary pull-right">Cancel</a>
+
+                        <br>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Password</label>
-                                    <input type="text" name="pass" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Confirm Password</label>
-                                    <input type="text"  class="form-control" >
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center">
-                            <input type="submit" class="btn btn-primary btn-lg waves-effect" value="ADD">
-                            <a href="../admin/accounts.php" class="btn btn-primary btn-lg waves-effect">CLOSE</a>
-                        </div>
-                    </div>
-
                 </div>
             </form>
         </div>

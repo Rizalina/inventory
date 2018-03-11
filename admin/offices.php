@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Offices</title>
+    <title>Issuance</title>
 
     <!-- Favicon-->
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
@@ -16,13 +16,14 @@
     <!-- Bootstrap Core Css -->
     <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-
-
     <!-- Waves Effect Css -->
     <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
 
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
@@ -49,25 +50,12 @@
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="dashboard.php">GENERAL SERVICES OFFICE</a>
-            </div>
-        </div>
-    </nav>
-       <!-- Top Bar -->
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
 
-                <a class="navbar-brand" href="accounts.php">
+                <a class="navbar-brand" href="issuance.php">
                 <?php
                 session_start();
                 echo strtoupper($_SESSION['username']);
@@ -106,9 +94,11 @@
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
+
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
+
                     <li>
                         <a href="dashboard.php">
                             <i class="material-icons">dashboard</i>
@@ -127,10 +117,16 @@
                             <span>Issuance</span>
                         </a>
                     </li>
-                     <li>
+                    <li>
                         <a href="reorder.php">
-                            <i class="material-icons">local_shipping</i>
+                            <i class="material-icons">error</i>
                             <span>Re-order</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="supplier.php">
+                            <i class="material-icons">local_shipping</i>
+                            <span>Suppliers</span>
                         </a>
                     </li>
                     <li>
@@ -141,192 +137,106 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
-                            <span>Widgets</span>
+                            <i class="material-icons">assignment</i>
+                            <span>Items</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Cards</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="../pages/widgets/cards/basic.html">Basic</a>
-                                    </li>
-                                    <li>
-                                        <a href="../pages/widgets/cards/colored.html">Colored</a>
-                                    </li>
-                                    <li>
-                                        <a href="../pages/widgets/cards/no-header.html">No Header</a>
-                                    </li>
-                                </ul>
+                                <a href="items.php"><strong>Category 1</strong></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Infobox</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="../pages/widgets/infobox/infobox-1.html">Infobox-1</a>
-                                    </li>
-                                    <li>
-                                        <a href="../pages/widgets/infobox/infobox-2.html">Infobox-2</a>
-                                    </li>
-                                    <li>
-                                        <a href="../pages/widgets/infobox/infobox-3.html">Infobox-3</a>
-                                    </li>
-                                    <li>
-                                        <a href="../pages/widgets/infobox/infobox-4.html">Infobox-4</a>
-                                    </li>
-                                    <li>
-                                        <a href="../pages/widgets/infobox/infobox-5.html">Infobox-5</a>
-                                    </li>
-                                </ul>
+                                <a href="two.php"><strong>Category 2</strong></a>
                             </li>
+                            <li>
+                                <a href="three.php"><strong>Category 3</strong></a>
+                            </li>
+                            <li>
+                                <a href="four.php"><strong>Category 4</strong></a>
+                            </li>
+                            <li >
+                                <a href="five.php"><strong>Category 5</strong></a>
+                            </li>
+
                         </ul>
-                    </li>
-                    <li class="active">
-                        <a href="offices.php;" class="menu-toggle">
-                            <i class="material-icons">swap_calls</i>
-                            <span>Offices</span>
-                        </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
-                            <span>Forms</span>
+                        <a href="returns.php">
+                            <i class="material-icons">event_note</i>
+                            <span>Returns</span>
                         </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../pages/forms/basic-form-elements.html">Basic Form Elements</a>
-                            </li>
-                            <li>
-                                <a href="../pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
-                            </li>
-                            <li>
-                                <a href="../pages/forms/form-examples.html">Form Examples</a>
-                            </li>
-                            <li>
-                                <a href="../pages/forms/form-validation.html">Form Validation</a>
-                            </li>
-                            <li>
-                                <a href="../pages/forms/form-wizard.html">Form Wizard</a>
-                            </li>
-                            <li>
-                                <a href="../pages/forms/editors.html">Editors</a>
-                            </li>
-                        </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
-                            <span>Tables</span>
+                            <span>Reports</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../pages/tables/normal-tables.html">Normal Tables</a>
+                                <a href="raos.php"><strong>RAOS</strong></a>
                             </li>
                             <li>
-                                <a href="raos.php">Jquery Datatables</a>
+                                <a href="rosi.php"><strong>ROSI</strong></a>
                             </li>
                             <li>
-                                <a href="../pages/tables/editable-table.html">Editable Tables</a>
+                                <a href="ssmi.php"><strong>SSMI</strong></a>
+                            </li>
+                            <li>
+                                <a href="stockcard.php"><strong>STOCK CARD</strong></a>
                             </li>
                         </ul>
                     </li>
-                   
-                      
-        
-                    <li>
+
+                    <li class="active">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">pie_chart</i>
-                            <span>Charts</span>
+                            <span>Settings</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
-                                <a href="../pages/charts/morris.html">Morris</a>
+                            <li class="active">
+                                <a href="offices.php">Offices</a>
                             </li>
                             <li>
-                                <a href="../pages/charts/flot.html">Flot</a>
+                                <a href="charts/flot.html">Flot</a>
                             </li>
                             <li>
-                                <a href="../pages/charts/chartjs.html">ChartJS</a>
+                                <a href="charts/chartjs.html">ChartJS</a>
                             </li>
                             <li>
-                                <a href="../pages/charts/sparkline.html">Sparkline</a>
+                                <a href="charts/sparkline.html">Sparkline</a>
                             </li>
                             <li>
-                                <a href="../pages/charts/jquery-knob.html">Jquery Knob</a>
+                                <a href="charts/jquery-knob.html">Jquery Knob</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">content_copy</i>
-                            <span>Example Pages</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../pages/examples/sign-in.html">Sign In</a>
-                            </li>
-                            <li>
-                                <a href="../pages/examples/sign-up.html">Sign Up</a>
-                            </li>
-                            <li>
-                                <a href="../pages/examples/forgot-password.html">Forgot Password</a>
-                            </li>
-                            <li>
-                                <a href="../pages/examples/blank.html">Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="../pages/examples/404.html">404 - Not Found</a>
-                            </li>
-                            <li>
-                                <a href="../pages/examples/500.html">500 - Server Error</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                    </ul>
-                    </li>
-                    
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="changelogs.html">
-                            <i class="material-icons">update</i>
-                            <span>Changelogs</span>
-                        </a>
-                    </li>
-                    
-                </ul>
+
+
             </div>
             <!-- #Menu -->
-            
+
         </aside>
         <!-- #END# Left Sidebar -->
     </section>
+        <!-- #END# Left Sidebar -->
 
-    <!-- Modal for Add Account -->
-    <div class="modal col-lg-12" id="add_office" data-backdrop="static">
+        <!-- Modal for Add Office -->
+        <div class="modal col-lg-12" id="addOffice" data-backdrop="static">
+            <div class="modal-dialog" style="width:90%;">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Edit Office -->
+    <div class="modal col-lg-12" id="editOffice" data-backdrop="static">
         <div class="modal-dialog" style="width:100%;">
             <div class="modal-content">
             </div>
         </div>
     </div>
 
-    <!-- Modal for Edit Account -->
-    <div class="modal col-lg-12" id="edit_office" data-backdrop="static">
-        <div class="modal-dialog" style="width:50%;">
-            <div class="modal-content">
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Delete Account -->
-    <div class="modal col-lg-12" id="del_office data-backdrop="static">
+    <!-- Modal for Delete Office -->
+    <div class="modal col-lg-12" id="deleteOffice" data-backdrop="static">
         <div class="modal-dialog" style="width:20%;">
             <div class="modal-content">
             </div>
@@ -336,50 +246,55 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="block-header">
-                <h2>OFFICES</h2>
-            </div>
-            <!-- Basic Table -->
+            <!-- Basic Examples -->
             <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 ">
                     <div class="card">
-                        <div class="body table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Office Name</th>
-                                        <th>Abbreviation</th>
-                                        <th>FPP</th>
-                                        <th>RC CODE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                require '../php/db.php';
-                                $sql = "SELECT * FROM office";
-                                $res = $conn->query($sql);
+                        <div class="header">
+                            <h2 class="text-center">Offices</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example ">
+                                    <thead>
+                                        <tr>
+                                            <th>Office</th>
+                                            <th>Abbr</th>
+                                            <th>Fpp</th>
+                                            <th>RC</th>
+                                            <th>Process</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                        require '../php/db.php';
 
-                                if($res){
-                                    while ($row = $res->fetch_assoc()){
-                                        echo  "<tr>";
-                                        echo "<td>" . $row['name'] . "</td>";
-                                        echo "<td>" . $row['abbr'] . "</td>";
-                                        echo "<td>" . $row['fpp'] . "</td>";
-                                        echo "<td>" . $row['responsibility'] . "</td>";
-                                        echo "<td>" . "<a href=" .'../php/admin/editOffice.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#edit_office'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/deleteOffice.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#del_office'>delete</a>" . "</td>";
-                                        echo "</tr>";
-                                    }
-                                }
+                                        $sql = "SELECT * FROM offices";
+                                        $res = $conn->query($sql);
 
-                                ?>
-                                </tbody>
-                            </table>
-                            <a href="../php/admin/addOffice.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_office">Add Office</a>
+                                        if($res){
+                                            while ($row = $res->fetch_assoc()){
+                                                echo  "<tr>";
+                                                echo "<td width='40%'>" . $row['office'] . "</td>";
+                                                echo "<td>" . $row['abbr'] . "</td>";
+                                                echo "<td>" . $row['fpp'] . "</td>";
+                                                echo "<td>" . $row['responsibility'] . "</td>";
+                                                echo "<td>" . "<a href=" .'../php/admin/modal/editOffice.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#editOffice'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/modal/deleteOffice.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#deleteOffice'>delete</a>" . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        }
+
+                                    ?>
+                                    </tbody>
+                                </table>
+                                <a href="../php/admin/modal/addOffice.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#addOffice">Add Office</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Basic Table -->
+            <!-- #END# Basic Examples -->
+        </div>
     </section>
 
     <!-- Jquery Core Js -->
@@ -391,15 +306,31 @@
     <!-- Select Plugin Js -->
     <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
+    <!-- Slimscroll Plugin Js -->
+    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
     <!-- Waves Effect Plugin Js -->
     <script src="../plugins/node-waves/waves.js"></script>
 
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
+    <script src="../js/pages/tables/jquery-datatable.js"></script>
 
-    <!-- Demo Js -->
-    <script src="../js/demo.js"></script>
+    <script src="../js/custom.js"></script>
+
+
+
 </body>
 
 </html>

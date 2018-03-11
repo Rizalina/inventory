@@ -8,16 +8,15 @@
         <div class="card-content table-responsive">
             <?php
             $id = $_GET['num'];
-            echo "<form action=" . '../php/admin/updateReorder.php?ii='.$id . " " . "method='post' >";
+            echo "<form action=" . '../php/admin/updateSupplier.php?ii='.$id . " " . "method='post' >";
 
             ?>
                 <table class="table">
                     <thead class="text-primary">
                     <th>Supplier</th>
                     <th>Tin Number</th>
-                    <th>Tax Number</th>
-                    <th>Contact Person</th>
-                    <th>Contact Number</th>
+                    <th>PO Number</th>
+                    <th>PO Date</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -29,8 +28,6 @@
                                 $sql = "SELECT supplierName FROM suppliers WHERE id = '$a'";
                                 $res = $conn->query($sql);
                                 $r = $res->fetch_row();
-
-
                                 echo "<input name='supplierName' value='" . $r[0] . "' class='form-control' type='text' required>";
 
                                 ?>
@@ -54,27 +51,12 @@
                                 require '../../db.php';
                                 $a = $_GET['num'];
 
-                                $sql = "SELECT taxNumber FROM suppliers WHERE id = '$a'";
+                                $sql = "SELECT poNumber FROM suppliers WHERE id = '$a'";
                                 $res = $conn->query($sql);
                                 $r = $res->fetch_row();
 
 
-                                echo "<input name='tax' value='" . $r[0] . "' class='form-control' type='text' required>";
-
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                require '../../db.php';
-                                $a = $_GET['num'];
-
-                                $sql = "SELECT contactPerson FROM suppliers WHERE id = '$a'";
-                                $res = $conn->query($sql);
-                                $r = $res->fetch_row();
-
-
-                                echo "<input name='contactPerson' value='" . $r[0] . "' class='form-control' type='text' required>";
+                                echo "<input name='poNumber' value='" . $r[0] . "' class='form-control' type='text' required>";
 
                                 ?>
 
@@ -85,12 +67,12 @@
                                 require '../../db.php';
                                 $a = $_GET['num'];
 
-                                $sql = "SELECT contactNumber FROM suppliers WHERE id = '$a'";
+                                $sql = "SELECT poDate FROM suppliers WHERE id = '$a'";
                                 $res = $conn->query($sql);
                                 $r = $res->fetch_row();
 
 
-                                echo "<input name='contactNumber' value='" . $r[0] . "' class='form-control' type='text' required>";
+                                echo "<input name='poDate' value='" . $r[0] . "' class='form-control' type='text' required>";
 
                                 ?>
                             </td>

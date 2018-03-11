@@ -2,17 +2,17 @@
 <div class="col-md-12">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="title text-center">Add Item</h4>
+            <h4 class="title text-center">Add Office</h4>
         </div>
         <hr>
         <div class="card-content table-responsive">
-            <form action="../php/admin/addSupplier.php" method="post">
+            <form action="../php/admin/addOffice.php" method="post">
                 <table class="table">
                     <thead class="text-primary">
-                    <th>Supplier</th>
-                    <th>Tin Number</th>
-                    <th>PO Number</th>
-                    <th>PO Date</th>
+                        <th>Office</th>
+                        <th>Abbr</th>
+                        <th>Fpp</th>
+                        <th>RC</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -21,13 +21,13 @@
 
                             </td>
                             <td>
-                                <input type="text"  name = "tinNumber" class="form-control">
+                                <input type="text"  name = "abbr" class="form-control" required>
                             </td>
                             <td>
-                                <input type="text"  name = "poNumber" class="form-control">
+                                <input type="text" name = "fpp" class="form-control" >
                             </td>
                             <td>
-                                <input type="date"  name = "poDate" class="form-control">
+                                <input type="text"  name = "rc" class="form-control">
                             </td>
 
                         </tr>

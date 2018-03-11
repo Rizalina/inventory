@@ -7,20 +7,17 @@
  */
 require '../db.php';
 
-$person = $_POST['contactPerson'];
-$number = $_POST['contactNumber'];
-$name = $_POST['supplierName'];
-$tax = $_POST['taxNumber'];
+$n = $_POST['name'];
 $tin = $_POST['tinNumber'];
+$pN = $_POST['poNumber'];
+$pD = $_POST['poDate'];
 
 
 
-$sql = "INSERT INTO suppliers(supplierName,taxNumber,tinNumber,contactPerson,contactNumber) 
-VALUES('$name','$person','$number','$tax','$tin')";
+$sql = "INSERT INTO suppliers(supplierName,tinNumber,poNumber,poDate) 
+VALUES('$n','$tin','$pN','$pD')";
 
 if($conn->query($sql)){
-
-
     header("Location:../../admin/supplier.php");
 }else{
     $m = "Error Adding Supplier! Please contact administrator!" ;

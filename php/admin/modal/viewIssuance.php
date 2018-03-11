@@ -184,15 +184,17 @@
                             $id = $_GET['num'];
                             $sql = "SELECT * FROM itemissuance WHERE issue_id = '$id'";
                             $res = $conn->query($sql);
+
                             if($res){
                                 while($row = $res->fetch_assoc()){
                                     echo "<tr>"
-                                        . "<td>" . "<input type = 'text' value = '" .$row['category'] . "' placeholder = '" . $row['category'] ."' name = 'category'>" . "</td>"
-                                        . "<td>" . "<input type = 'text' size = '50px' value = '" .$row['description'] . "' placeholder = '" . $row['description'] ."' name = 'description'>". "</td>"
-                                        . "<td>" . "<input type = 'text' value = '" .$row['unit'] . "' placeholder = '" . $row['unit'] ."' name = 'unit'>". "</td>"
-                                        . "<td>" . "<input type = 'text' value = '" .$row['quantityRequested'] . "' placeholder = '" . $row['quantityRequested'] ."' name = 'quantityRequested'>". "</td>"
-                                        . "<td>" . "<input type = 'text' value = '" .$row['quantityIssued'] . "' placeholder = '" . $row['quantityIssued'] ."' name = 'quantityIssued'>". "</td>"
-                                        . "<td>" . "<input type = 'text' value = '" .$row['remarks'] . "' placeholder = '" . $row['remarks'] ."' name = 'remarks'>". "</td>"
+                                        . "<td>" . "<input type = 'text' value = '" .$row['category'] . "' placeholder = '" . $row['category'] ."' name = 'category[]'>" . "</td>"
+                                        . "<td>" . "<input type = 'text' size = '50px' value = '" .$row['description'] . "' placeholder = '" . $row['description'] ."' name = 'description[]'>". "</td>"
+                                        . "<td>" . "<input type = 'text' value = '" .$row['unit'] . "' placeholder = '" . $row['unit'] ."' name = 'unit[]'>". "</td>"
+                                        . "<td>" . "<input type = 'text' value = '" .$row['quantityRequested'] . "' placeholder = '" . $row['quantityRequested'] ."' name = 'quantityRequested[]'>". "</td>"
+                                        . "<td>" . "<input type = 'text' value = '" .$row['quantityIssued'] . "' placeholder = '" . $row['quantityIssued'] ."' name = 'quantityIssued[]'>". "</td>"
+                                        . "<td>" . "<input type = 'text' value = '" .$row['remarks'] . "' placeholder = '" . $row['remarks'] ."' name = 'remarks[]'>". "</td>"
+
                                         . "</tr>";
                                 }
                             }

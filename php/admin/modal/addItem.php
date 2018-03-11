@@ -11,37 +11,64 @@
                     <thead class="text-primary">
                     <th>ACCT-SN</th>
                     <th>PGSO-SN</th>
-                    <th>DESCRIPTION</th>
+                    <th>ITEM DESCRIPTION</th>
                     <th>UOM</th>
                     <th>BRAND</th>
-                    <th>STARTING QUANTITY</th>
+                    <th style="width: 10px">STARTING QUANTITY</th>
                     <th>UNIT COST</th>
+                    <th>SUPPLIER</th>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
-                                <input name="acct" placeholder="ACCT-SN" class="form-control" type="text" required>
+                                <input name="acct"  class="form-control" type="text" required style="width:70px;">
 
                             </td>
                             <td>
-                                <input type="number" placeholder="PGSO-SN" name = "pgso" class="form-control" required>
+                                <input type="text " name = "pgso" class="form-control" required style="width:70px;">
                             </td>
                             <td>
-                                <input type="text" placeholder="Description" name = "description" class="form-control" style="width:350px;">
+                                <input type="text"  name = "description" class="form-control" style="width:350px;">
                             </td>
                             <td>
-                                <input type="text" placeholder="unit" name = "unit" class="form-control">
+                                <select class="form-control" name="unit">
+                                    <?php
+                                    require '../../db.php';
+                                    $sql = "SELECT units FROM units";
+                                    $res = $conn->query($sql);
+
+                                    if($res){
+                                        while ($row = $res->fetch_assoc()){
+                                            echo "<option>" . $row['units'] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
                             </td>
                             <td>
-                                <input type="text" placeholder="brand" name = "brand" class="form-control">
+                                <input type="text"  name = "brand" style="width:70px;" class="form-control">
                             </td>
                             <td>
-                                <input type="number" placeholder="starting" id = "quantity" onkeydown="NumberOnly();" onkeyup="checkNumber()" name = "sQuantity" class="form-control">
-                                <span id = "confirmMessageAA"></span>
+                                <input type="number"  style="width:70px;" id = "quantity"  name = "sQuantity" class="form-control">
                             </td>
                             <td>
-                                <input type="number" placeholder="Cost" id = "quantity2" onkeydown="NumberOnly2();" onkeyup="checkNumber2()" name = "unitCost" class="form-control">
-                                <span id = "confirmMessageBB"></span>
+                                <input type="number"  style="width:70px;" id = "quantity2"  name = "unitCost" class="form-control">
+                            </td>
+                            <td>
+                                <select class="form-control" name="supplier">
+                                <?php
+                                    require '../../db.php';
+                                    $sql = "SELECT supplierName FROM suppliers";
+                                    $res = $conn->query($sql);
+
+                                    if($res){
+                                        while ($row = $res->fetch_assoc()){
+                                            echo "<option>" . $row['supplierName'] . "</option>";
+                                        }
+                                    }
+                                ?>
+                                </select>
+
                             </td>
                         </tr>
                     </tbody>

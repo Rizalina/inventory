@@ -35,13 +35,13 @@ if($res->num_rows > 0){
     $_SESSION['username'] = $user;
     $_SESSION['full'] = strtoupper($r[1] . " " . $r[0]);
 
-    if($r[1]=="admin") {
+    if($r[2]=="admin") {
         header('Location:../admin/dashboard.php');
-    }elseif($r[1]=="user"){
+    }elseif($r[2]=="user"){
         header('Location:../user/addItem.php');
 
     }else{
-        $m="error login";
+        $m="Error login, Unknown user type! Contact Administrator";
         echo "
             <script type = 'text/javascript'>
                 alert('$m');

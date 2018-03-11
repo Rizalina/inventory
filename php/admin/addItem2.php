@@ -18,20 +18,34 @@ $quan = $_POST['sQuantity'];
 $cost = $_POST['unitCost'];
 $level = floor($quan * .2);
 $expiration = $_POST['dateT'];
+$supplier = $_POST['supplier'];
 
 
+$sql2 = "SELECT id FROM suppliers WHERE supplierName LIKE '%$supplier%'";
+$res = $conn->query($sql2);
+
+if($res) {
+    $r = $res->fetch_row();
+
+    $sql = "INSERT INTO items(category,acctSn,pgsoSn,description,unit,startingQuantity,unitCost,brand,orderPoint,expirationDate,supplier_id) 
+VALUES('02','$acct','$pgso','$des','$unit','$quan','$cost','$brand','$level','$expiration','$r[0]')";
+
+    if ($conn->query($sql)) {
 
 
+        header("Location:../../admin/$temp");
+    } else {
+        $m = "Error Adding Item! Please contact administrator!";
 
-$sql = "INSERT INTO items(category,acctSn,pgsoSn,description,unit,startingQuantity,unitCost,brand,orderPoint,expirationDate) 
-VALUES('02','$acct','$pgso','$des','$unit','$quan','$cost','$brand','$level','$expiration')";
-
-if($conn->query($sql)){
-
-
-    header("Location:../../admin/$temp");
+        echo "
+            <script type = 'text/javascript'>
+            alert('$m');
+            window.location.replace('../admin/$temp');
+            </script>
+            ";
+    }
 }else{
-    $m = "Error Adding Item! Please contact administrator!" ;
+    $m = "Error Supplier not found! Please contact administrator!";
 
     echo "
             <script type = 'text/javascript'>

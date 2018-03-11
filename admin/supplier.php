@@ -106,16 +106,18 @@
 <section>
     <!-- Left Sidebar -->
     <aside id="leftsidebar" class="sidebar">
+
         <!-- Menu -->
         <div class="menu">
             <ul class="list">
+
                 <li>
                     <a href="dashboard.php">
                         <i class="material-icons">dashboard</i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="accounts.php">
                         <i class="material-icons">people</i>
                         <span>Accounts</span>
@@ -129,8 +131,14 @@
                 </li>
                 <li>
                     <a href="reorder.php">
-                        <i class="material-icons">local_shipping</i>
+                        <i class="material-icons">error</i>
                         <span>Re-order</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="supplier.php">
+                        <i class="material-icons">local_shipping</i>
+                        <span>Suppliers</span>
                     </a>
                 </li>
                 <li>
@@ -141,244 +149,86 @@
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">widgets</i>
-                        <span>Widgets</span>
+                        <i class="material-icons">assignment</i>
+                        <span>Items</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <span>Cards</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="../pages/widgets/cards/basic.html">Basic</a>
-                                </li>
-                                <li>
-                                    <a href="../pages/widgets/cards/colored.html">Colored</a>
-                                </li>
-                                <li>
-                                    <a href="../pages/widgets/cards/no-header.html">No Header</a>
-                                </li>
-                            </ul>
+                            <a href="items.php"><strong>Category 1</strong></a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <span>Infobox</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="../pages/widgets/infobox/infobox-1.html">Infobox-1</a>
-                                </li>
-                                <li>
-                                    <a href="../pages/widgets/infobox/infobox-2.html">Infobox-2</a>
-                                </li>
-                                <li>
-                                    <a href="../pages/widgets/infobox/infobox-3.html">Infobox-3</a>
-                                </li>
-                                <li>
-                                    <a href="../pages/widgets/infobox/infobox-4.html">Infobox-4</a>
-                                </li>
-                                <li>
-                                    <a href="../pages/widgets/infobox/infobox-5.html">Infobox-5</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">swap_calls</i>
-                        <span>User Interface (UI)</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="../pages/ui/alerts.html">Alerts</a>
+                            <a href="two.php"><strong>Category 2</strong></a>
                         </li>
                         <li>
-                            <a href="../pages/ui/animations.html">Animations</a>
+                            <a href="three.php"><strong>Category 3</strong></a>
                         </li>
                         <li>
-                            <a href="../pages/ui/badges.html">Badges</a>
+                            <a href="four.php"><strong>Category 4</strong></a>
+                        </li>
+                        <li>
+                            <a href="five.php"><strong>Category 5</strong></a>
                         </li>
 
-                        <li>
-                            <a href="../pages/ui/breadcrumbs.html">Breadcrumbs</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/buttons.html">Buttons</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/collapse.html">Collapse</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/colors.html">Colors</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/dialogs.html">Dialogs</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/icons.html">Icons</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/labels.html">Labels</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/list-group.html">List Group</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/media-object.html">Media Object</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/modals.html">Modals</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/notifications.html">Notifications</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/pagination.html">Pagination</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/preloaders.html">Preloaders</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/progressbars.html">Progress Bars</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/range-sliders.html">Range Sliders</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/sortable-nestable.html">Sortable & Nestable</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/tabs.html">Tabs</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/thumbnails.html">Thumbnails</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/tooltips-popovers.html">Tooltips & Popovers</a>
-                        </li>
-                        <li>
-                            <a href="../pages/ui/waves.html">Waves</a>
-                        </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">assignment</i>
-                        <span>Forms</span>
+                    <a href="returns.php">
+                        <i class="material-icons">event_note</i>
+                        <span>Returns</span>
                     </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="../pages/forms/basic-form-elements.html">Basic Form Elements</a>
-                        </li>
-                        <li>
-                            <a href="../pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
-                        </li>
-                        <li>
-                            <a href="../pages/forms/form-examples.html">Form Examples</a>
-                        </li>
-                        <li>
-                            <a href="../pages/forms/form-validation.html">Form Validation</a>
-                        </li>
-                        <li>
-                            <a href="../pages/forms/form-wizard.html">Form Wizard</a>
-                        </li>
-                        <li>
-                            <a href="../pages/forms/editors.html">Editors</a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">view_list</i>
-                        <span>Tables</span>
+                        <span>Reports</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="../pages/tables/normal-tables.html">Normal Tables</a>
+                            <a href="raos.php"><strong>RAOS</strong></a>
                         </li>
                         <li>
-                            <a href="raos.php">Jquery Datatables</a>
+                            <a href="rosi.php"><strong>ROSI</strong></a>
                         </li>
                         <li>
-                            <a href="../pages/tables/editable-table.html">Editable Tables</a>
+                            <a href="ssmi.php"><strong>SSMI</strong></a>
+                        </li>
+                        <li>
+                            <a href="stockcard.php"><strong>STOCK CARD</strong></a>
                         </li>
                     </ul>
                 </li>
-
-
 
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">pie_chart</i>
-                        <span>Charts</span>
+                        <span>Settings</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="../pages/charts/morris.html">Morris</a>
+                            <a href="offices.php">Offices</a>
                         </li>
                         <li>
-                            <a href="../pages/charts/flot.html">Flot</a>
+                            <a href="charts/flot.html">Flot</a>
                         </li>
                         <li>
-                            <a href="../pages/charts/chartjs.html">ChartJS</a>
+                            <a href="charts/chartjs.html">ChartJS</a>
                         </li>
                         <li>
-                            <a href="../pages/charts/sparkline.html">Sparkline</a>
+                            <a href="charts/sparkline.html">Sparkline</a>
                         </li>
                         <li>
-                            <a href="../pages/charts/jquery-knob.html">Jquery Knob</a>
+                            <a href="charts/jquery-knob.html">Jquery Knob</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">content_copy</i>
-                        <span>Example Pages</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="../pages/examples/sign-in.html">Sign In</a>
-                        </li>
-                        <li>
-                            <a href="../pages/examples/sign-up.html">Sign Up</a>
-                        </li>
-                        <li>
-                            <a href="../pages/examples/forgot-password.html">Forgot Password</a>
-                        </li>
-                        <li>
-                            <a href="../pages/examples/blank.html">Blank Page</a>
-                        </li>
-                        <li>
-                            <a href="../pages/examples/404.html">404 - Not Found</a>
-                        </li>
-                        <li>
-                            <a href="../pages/examples/500.html">500 - Server Error</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-            </ul>
-            </li>
 
-            </ul>
-            </li>
-            </ul>
-            </li>
-            <li>
-                <a href="changelogs.html">
-                    <i class="material-icons">update</i>
-                    <span>Changelogs</span>
-                </a>
-            </li>
 
-            </ul>
         </div>
         <!-- #Menu -->
 
     </aside>
     <!-- #END# Left Sidebar -->
+
 </section>
 
 <!-- Modal for Add Supplier -->
@@ -390,7 +240,7 @@
 </div>
 
 <!-- Modal for Edit Supplier -->
-<div class="modal col-lg-12" id="edit_account" data-backdrop="static">
+<div class="modal col-lg-12" id="edit_supplier" data-backdrop="static">
     <div class="modal-dialog" style="width:80%;">
         <div class="modal-content">
         </div>
@@ -409,21 +259,22 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>ACCOUNTS</h2>
-        </div>
         <!-- Basic Table -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
+                    <div class="header">
+                        <h2 class="text-center">Suppliers</h2>
+                    </div>
                     <div class="body table-responsive">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th>Supplier</th>
                                 <th>Tin Number</th>
-                                <th>Tax Number</th>
-                                <th>Contact Person</th>
-                                <th>Contact Number</th>
+                                <th>PO Number</th>
+                                <th>PO Date</th>
+                                <th>Person</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -436,11 +287,10 @@
                                 while ($row = $res->fetch_assoc()){
                                     echo  "<tr>";
                                     echo "<td>" . $row['supplierName'] . "</td>";
-                                    echo "<td>" . $row['taxNumber'] . "</td>";
                                     echo "<td>" . $row['tinNumber'] . "</td>";
-                                    echo "<td>" . $row['contactPerson'] . "</td>";
-                                    echo "<td>" . $row['contactNumber'] . "</td>";
-                                    echo "<td>" . "<a href=" .'../php/admin/modal/editSupplier.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#edit_account'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/modal/deleteSupplier.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#del_supplier'>delete</a>" . "</td>";
+                                    echo "<td>" . $row['poNumber'] . "</td>";
+                                    echo "<td>" . $row['poDate'] . "</td>";
+                                    echo "<td>" . "<a href=" .'../php/admin/modal/editSupplier.php?num=' .$row['id'] . "  " . " class='material-icons' data-toggle='modal' data-target='#edit_supplier'>mode_edit</a>" . "  ||  " . "<a href=" .'../php/admin/modal/deleteSupplier.php?num=' .$row['id'] . " " . " class='material-icons' data-toggle='modal' data-target='#del_supplier'>delete</a>" . "</td>";
                                     echo "</tr>";
                                 }
                             }
@@ -448,7 +298,7 @@
                             ?>
                             </tbody>
                         </table>
-                        <a href="../php/admin/modal/addSupplier.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_supplier">Add Supplier</a>
+                        <a href="../php/admin/modal/editSupplier.php" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add_supplier">Add Supplier</a>
                     </div>
                 </div>
             </div>

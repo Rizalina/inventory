@@ -145,6 +145,12 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="returns.php">
+                        <i class="material-icons">event_note</i>
+                        <span>Returns</span>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">view_list</i>
                         <span>Reports</span>
@@ -172,7 +178,7 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="charts/morris.html">Morris</a>
+                            <a href="offices.php">Offices</a>
                         </li>
                         <li>
                             <a href="charts/flot.html">Flot</a>
@@ -240,7 +246,7 @@
                         $res = $conn->query($sql);
                         $r = $res->fetch_row();
 
-                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'>" . $r[0] . "</div>";
                         ?>
 
                     </div>
@@ -260,7 +266,7 @@
                         $res = $conn->query($sql);
                         $r = $res->fetch_row();
 
-                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'>" . $r[0] . "</div>";
                         ?>
                     </div>
                 </div>
@@ -279,7 +285,7 @@
                         $res = $conn->query($sql);
                         $r = $res->fetch_row();
 
-                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'>" . $r[0] . "</div>";
                         ?>
                     </div>
                 </div>
@@ -298,7 +304,7 @@
                         $res = $conn->query($sql);
                         $r = $res->fetch_row();
 
-                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'>" . $r[0] . "</div>";
                         ?>
                     </div>
                 </div>
@@ -312,7 +318,15 @@
                     </div>
                     <div class="content">
                         <div class="text">RETURNS</div>
-                        <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                         <?php
+
+                        require '../php/db.php';
+                        $sql = "SELECT COUNT(id) FROM returns";
+                        $res = $conn->query($sql);
+                        $r = $res->fetch_row();
+
+                         echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'>" . $r[0] . "</div>";
+                         ?>
                     </div>
                 </div>
             </div>
@@ -330,7 +344,7 @@
                         $res = $conn->query($sql);
                         $r = $res->fetch_row();
 
-                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'>" . $r[0] . "</div>";
                         ?>
                     </div>
                 </div>
@@ -349,7 +363,7 @@
                         $res = $conn->query($sql);
                         $r = $res->fetch_row();
 
-                        echo "<div class='number count-to' data-from='0' data-to='$r[0]'' data-speed='15' data-fresh-interval='20'></div>";
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]'' data-speed='15' data-fresh-interval='20'>" . $r[0] . "</div>";
                         ?>
                     </div>
                 </div>
@@ -364,11 +378,11 @@
                         <?php
 
                         require '../php/db.php';
-                        $sql = "SELECT COUNT(id) FROM office";
+                        $sql = "SELECT COUNT(id) FROM offices";
                         $res = $conn->query($sql);
                         $r = $res->fetch_row();
 
-                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'></div>";
+                        echo "<div class='number count-to' data-from='0' data-to='$r[0]' data-speed='15' data-fresh-interval='20'>" . $r[0] . "</div>";
                         ?>
                     </div>
                 </div>
