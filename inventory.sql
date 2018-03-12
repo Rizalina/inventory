@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 06, 2018 at 09:53 AM
+-- Generation Time: Mar 12, 2018 at 12:36 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -42,16 +42,17 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `logoutTime` varchar(45) DEFAULT NULL,
   `loginDate` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `accounts`
 --
 
 INSERT INTO `accounts` (`id`, `firstName`, `lastName`, `username`, `password`, `userType`, `loginTime`, `logoutTime`, `loginDate`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin', 'admin', '06:22:pm', '01:37:pm', '2018-03-05'),
-(2, 'swirah', 'cogasi', 'swira', 'swira', 'user', '12:27:am', '12:28:am', '2018-03-04'),
-(7, 'Lemuel', 'Estacio', 'lemuel', 'lemuel', 'user', NULL, NULL, NULL);
+(1, 'admin', 'admin', 'admin', 'admin', 'admin', '11:26:am', '11:26:am', '2018-03-10'),
+(9, 'Swira', 'Cogasi', 'swi', 'swi', 'user', '11:26:am', NULL, '2018-03-10'),
+(10, 'Lemuel', 'Estacio', 'lemuel', 'lemuel', 'user', NULL, NULL, NULL),
+(11, 'christian', 'beltran', 'belt', 'belt', 'user', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -89,15 +90,7 @@ CREATE TABLE IF NOT EXISTS `issuance` (
   `typeT` varchar(20) NOT NULL,
   `status` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `issuance`
---
-
-INSERT INTO `issuance` (`id`, `division`, `office`, `responsibility`, `fpp`, `ris`, `sai`, `dateT`, `timeT`, `typeT`, `status`) VALUES
-(22, '1', 'GSO', '1', '1', '3456789', '3456789', '2018-03-02', '08:29:am', 'Office Supplies', 'pending'),
-(23, '1', 'GSO', '2', '1', '3456789', '3456789', '2018-03-02', '08:30:am', 'Office Supplies', 'pending');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -118,14 +111,7 @@ CREATE TABLE IF NOT EXISTS `itemissuance` (
   `remarks` varchar(150) NOT NULL,
   `issue_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `itemissuance`
---
-
-INSERT INTO `itemissuance` (`id`, `category`, `acctSN`, `pgsoSn`, `description`, `unit`, `quantityRequested`, `quantityIssued`, `remarks`, `issue_id`) VALUES
-(23, 1, 'asd', 'asda', 'Ballpen', 'pc', 2, 2, 'Issued', 22);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -145,21 +131,18 @@ CREATE TABLE IF NOT EXISTS `items` (
   `unitCost` int(5) NOT NULL,
   `brand` varchar(15) NOT NULL,
   `orderPoint` int(5) NOT NULL,
+  `expirationDate` date DEFAULT NULL,
+  `supplier_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`id`, `category`, `acctSn`, `pgsoSn`, `description`, `unit`, `startingQuantity`, `unitCost`, `brand`, `orderPoint`) VALUES
-(18, 5, '23', 23, 'asdasd', 'asd', 23, 23, 'asd', 4),
-(8, 4, 'JHSDBSD', 5, 'KSJHDSBASJJ', 'xsde', 100, 80, 'x brand', 118),
-(9, 3, '6', 5, 'hi zia zia', 'hp', 8, 8, 'hp', 5),
-(10, 4, '1234', 1234, 'ballpen', 'pcs', 1, 65, 'g-tech', 1),
-(11, 4, 'ewjkh', 22, 'cefcfvs', '22', 3, 800, 'x', 50),
-(12, 4, '6789', 65432, 'lapis', '1', 1, 20, 'mongol', 0),
-(17, 2, '1000', 23123, 'Yeah', 'pack', 100, 2, 'X', 20);
+INSERT INTO `items` (`id`, `category`, `acctSn`, `pgsoSn`, `description`, `unit`, `startingQuantity`, `unitCost`, `brand`, `orderPoint`, `expirationDate`, `supplier_id`) VALUES
+(30, 1, '12', 12, 'Alco', 'pack', 123, 12, 'X', 24, NULL, 4),
+(31, 2, '200', 121, 'Asd', 'pack', 123123, 12, 'asd', 24624, '2018-03-07', 4);
 
 -- --------------------------------------------------------
 
@@ -176,25 +159,25 @@ CREATE TABLE IF NOT EXISTS `logs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `office`
+-- Table structure for table `offices`
 --
 
-DROP TABLE IF EXISTS `office`;
-CREATE TABLE IF NOT EXISTS `office` (
+DROP TABLE IF EXISTS `offices`;
+CREATE TABLE IF NOT EXISTS `offices` (
   `id` int(45) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
+  `office` varchar(100) NOT NULL,
   `abbr` varchar(45) NOT NULL,
   `fpp` varchar(45) NOT NULL,
   `responsibility` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `OfficeName_UNIQUE` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `OfficeName_UNIQUE` (`office`)
+) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `office`
+-- Dumping data for table `offices`
 --
 
-INSERT INTO `office` (`id`, `name`, `abbr`, `fpp`, `responsibility`) VALUES
+INSERT INTO `offices` (`id`, `office`, `abbr`, `fpp`, `responsibility`) VALUES
 (1, 'Provincial Governor\'s Office (main)', 'PGO', '1000.1', '04-00-01-01'),
 (2, 'Prov\'l gov Office-interagency(Scholarship, SPES)', 'Interagency', '1000.1.4', '04-00-01-01'),
 (3, 'Benguet Day Celebration Expenses', 'ADIVAY', '1000.1', '04-00-01-01'),
@@ -242,7 +225,7 @@ INSERT INTO `office` (`id`, `name`, `abbr`, `fpp`, `responsibility`) VALUES
 (45, 'All Office (Terminal leaves,monetization,BAC-infra,BAC-Goods,Prov\'l Emp. Med.Examination,etc.)', 'ALL-OFFICE', '1000.1.2', '04-00-14-02'),
 (46, 'Non-Office', 'NON-OFFICE', '1000.1.3', '04-00-14-01'),
 (47, 'Interspecial Accounting Transfer', 'NON-OFFICE', '1000.1.3', '04-00-14-01'),
-(48, 'Aids to Boy Scout & Girl Scout, Red Cross', 'NON-OFFICE', '1000.1.3', '04-00-14-01'),
+(48, 'Aids to Boy Scout & Girl Scout, Red Cross', 'NON-OFFICE', '1000.1.3', '04-00-01-01'),
 (49, 'Cash Incentive Awards & Sports, Honoraria', 'NON-OFFICE', '1000.1.3', '04-00-14-01'),
 (50, 'Non-Gov\'t Org Rep, Academic & Tech. Skills', 'NON-OFFICE', '1000.1.3', '04-00-14-01'),
 (51, 'Comelec Expense', 'NON-OFFICE', '1000.1.3', '04-00-14-01'),
@@ -259,24 +242,36 @@ INSERT INTO `office` (`id`, `name`, `abbr`, `fpp`, `responsibility`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `returns`
+--
+
+DROP TABLE IF EXISTS `returns`;
+CREATE TABLE IF NOT EXISTS `returns` (
+  `id` int(45) NOT NULL AUTO_INCREMENT,
+  `item_id` int(45) NOT NULL,
+  `reason` varchar(150) NOT NULL,
+  `quantity` int(45) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `office_id` int(45) NOT NULL,
+  `unit` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `suppliers`
 --
 
 DROP TABLE IF EXISTS `suppliers`;
 CREATE TABLE IF NOT EXISTS `suppliers` (
   `id` int(45) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `taxNumber` varchar(45) NOT NULL,
+  `supplierName` varchar(100) NOT NULL,
   `tinNumber` varchar(45) NOT NULL,
+  `poNumber` varchar(45) NOT NULL,
+  `poDate` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `suppliers`
---
-
-INSERT INTO `suppliers` (`id`, `name`, `taxNumber`, `tinNumber`) VALUES
-(1, '2', '1', 'Me');
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
